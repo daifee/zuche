@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-class HomePage extends React.Component {
+class SelectSite extends React.Component {
   componentDidMount() {
     // TODO
   }
@@ -15,4 +15,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+export default SelectSite;
