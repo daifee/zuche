@@ -9,7 +9,7 @@ class Customer extends React.Component {
   render() {
     return (
       <View>
-        <Text>{this.displayName}</Text>
+        <Text>Customer</Text>
       </View>
     );
   }

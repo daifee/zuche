@@ -9,7 +9,7 @@ class UserProfile extends React.Component {
   render() {
     return (
       <View>
-        <Text>{this.displayName}</Text>
+        <Text>UserProfile</Text>
       </View>
     );
   }
