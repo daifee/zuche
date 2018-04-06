@@ -22,6 +22,7 @@ const Root = TabNavigator({
     screen: UserProfile,
   },
 }, {
+  initialRouteName: 'HomePage',
   tabBarOptions: {
     activeTintColor: 'tomato',
     inactiveTintColor: 'gray',
@@ -47,6 +48,7 @@ const Stack = StackNavigator({
     screen: Search,
   },
 }, {
+  initialRouteName: 'Root',
   headerMode: 'screen',
 });
 
