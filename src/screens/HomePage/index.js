@@ -8,10 +8,6 @@ class HomePage extends React.Component {
     header: null
   };
 
-  componentDidMount() {
-    // TODO
-  }
-
   render() {
     return (
       <View>
