@@ -1,12 +1,28 @@
 import { StyleSheet } from 'react-native';
+import px from '../../../utils/px';
+import {
+  PADDING,
+  COMPONENT_BG_COLOR,
+  TEXT_COLOR,
+  TEXT_COLOR_SECONDARY,
+  FONT_SIZE,
+  LINE
+} from '../../../styles';
 
-// 间隔
-const MARGIN = 14;
+const itemValueText = {
+  color: TEXT_COLOR,
+  fontSize: FONT_SIZE.md,
+};
+
+const itemValuePlaceholder = {
+  color: TEXT_COLOR_SECONDARY,
+  fontSize: FONT_SIZE.md
+};
+
 
 export const SearchSection = StyleSheet.create({
   container: {
-    // flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: COMPONENT_BG_COLOR,
   },
 
   buttonContainer: {
@@ -23,42 +39,33 @@ export const Address = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: MARGIN,
-    marginHorizontal: MARGIN,
+    // marginTop: MARGIN,
+    paddingTop: PADDING.md,
+    marginHorizontal: PADDING.md,
   }
 });
 
 export const DropoffSwitch = StyleSheet.create({
   container: {
-    marginTop: 6
+    marginTop: px(6)
   }
 });
 
 export const City = StyleSheet.create({
   container: {
-    width: 90,
-    marginRight: 10,
+    width: px(180)
   },
-  text: {
-    color: '#333',
-    fontSize: 20,
-  },
-  placeholderText: {
-    color: '#999',
-  }
+  text: itemValueText,
+  placeholderText: itemValuePlaceholder
 });
 
 export const Site = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    marginLeft: PADDING.md
   },
-  text: {
-    color: '#333',
-    fontSize: 20,
-  },
-  placeholderText: {
-    color: '#999',
-  }
+  text: itemValueText,
+  placeholderText: itemValuePlaceholder
 });
 
 
@@ -66,8 +73,8 @@ export const Schedule = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: MARGIN,
-    marginHorizontal: MARGIN,
+    marginTop: PADDING.md,
+    marginHorizontal: PADDING.md,
   },
 });
 
@@ -83,50 +90,41 @@ export const TimeDay = StyleSheet.create({
   container: {
     flex: 1
   },
-  text: {
-    color: '#333',
-    fontSize: 16
-  }
+  text: itemValueText
 });
 
 export const TimeHours = StyleSheet.create({
-  text: {
-    color: '#333',
-    fontSize: 16
-  }
+  text: itemValueText
 });
 
 export const TimeAmount = StyleSheet.create({
   container: {
-    width: 30,
-    marginHorizontal: MARGIN,
+    width: px(60),
+    marginHorizontal: PADDING.md,
     borderBottomColor: 'transparent'
   },
   text: {
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: FONT_SIZE.sm
   }
 });
 
 
 export const ItemBox = StyleSheet.create({
   container: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#ccc',
+    borderBottomWidth: LINE.width,
+    borderBottomColor: LINE.color,
     borderStyle: 'solid',
-    paddingBottom: MARGIN,
-    overflow: 'hidden',
-  },
-
-  titleContainer: {
-    // marginBottom: 10,
+    paddingBottom: PADDING.md,
+    overflow: 'hidden'
   },
 
   title: {
-    fontSize: 12,
-    color: '#999',
+    fontSize: FONT_SIZE.sm,
+    color: TEXT_COLOR_SECONDARY
   },
 
   childrenContainer: {
-    marginTop: MARGIN,
+    marginTop: PADDING.md
   },
 });

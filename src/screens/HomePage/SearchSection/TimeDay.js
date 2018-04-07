@@ -9,7 +9,7 @@ export default function TimeDay(props) {
   const { date, title } = props;
 
   return (
-    <ItemBox title={title} style={styles.timeDayContainer}>
+    <ItemBox title={title} style={styles.container}>
       <Text style={styles.text}>12月{date.getDay()}日</Text>
     </ItemBox>
   );

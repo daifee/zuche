@@ -10,8 +10,8 @@ export default function TimeAmount(props) {
   const { days } = props;
 
   return (
-    <ItemBox style={styles.timeAmountContainer} title="">
-      <Text style={styles.timeAmount}>{days}天</Text>
+    <ItemBox style={styles.container} title="">
+      <Text style={styles.text}>{days}天</Text>
     </ItemBox>
   );
 }

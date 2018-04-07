@@ -12,7 +12,7 @@ export default function City(props) {
   if (empty) textStyle.push(styles.placeholderText);
 
   return (
-    <ItemBox title={title} style={styles.cityContainer}>
+    <ItemBox title={title} style={styles.container}>
       <Text style={[textStyle]}>
         {empty ? '请选择' : city.name_cn}
       </Text>
