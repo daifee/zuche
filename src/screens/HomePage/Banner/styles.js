@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native';
+import px from '../../../utils/px';
 
 export const index = StyleSheet.create({
   container: {
-    height: 120,
+    height: px(180),
   },
 
   image: {
