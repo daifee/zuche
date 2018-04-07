@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import px from '../../../utils/px';
 import {
+  COLOR,
   PADDING,
   COMPONENT_BG_COLOR,
   TEXT_COLOR,
@@ -23,6 +24,17 @@ const itemValuePlaceholder = {
 export const SearchSection = StyleSheet.create({
   container: {
     backgroundColor: COMPONENT_BG_COLOR,
+  },
+
+  titleContainer: {
+    paddingTop: PADDING.lg,
+  },
+
+  title: {
+    textAlign: 'center',
+    fontSize: FONT_SIZE.lg,
+    color: COLOR.primary,
+    fontWeight: 'bold',
   },
 
   buttonContainer: {
