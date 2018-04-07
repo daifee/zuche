@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
-import { ItemBox as ItemBoxStyle } from './styles';
+import { ItemBox as styles } from './styles';
 
 
 export default function ItemBox(props) {
@@ -10,11 +10,11 @@ export default function ItemBox(props) {
   } = props;
 
   return (
-    <View {...rest} style={[ItemBoxStyle.container, rest.style]}>
-      <View style={ItemBoxStyle.titleContainer}>
-        <Text style={ItemBoxStyle.title}>{title}</Text>
+    <View {...rest} style={[styles.container, rest.style]}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>{title}</Text>
       </View>
-      <View style={[ItemBoxStyle.childrenContainer, childrenContainerStyle]}>
+      <View style={[styles.childrenContainer, childrenContainerStyle]}>
         {children}
       </View>
     </View>

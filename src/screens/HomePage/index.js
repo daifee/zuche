@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import Banner from './Banner';
+import SearchSection from './SearchSection';
 
 
 class HomePage extends React.Component {
@@ -12,7 +13,7 @@ class HomePage extends React.Component {
     return (
       <View>
         <Banner node="string" />
-        <Text>HomePage</Text>
+        <SearchSection />
       </View>
     );
   }

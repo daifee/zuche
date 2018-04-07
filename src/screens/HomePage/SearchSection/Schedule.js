@@ -1,16 +1,17 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import Time, { TimeAmount } from './Time';
-import { Schedule as style } from './styles';
+import Time from './Time';
+import TimeAmount from './TimeAmount';
+import { Schedule as styles } from './styles';
 
 export default function Schedule(props) {
   const { pickupDate, dropoffDate } = props;
 
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <Time type="pickup" date={pickupDate} />
-      <TimeAmount />
+      <TimeAmount days={7} />
       <Time type="dropoff" date={dropoffDate} />
     </View>
   );

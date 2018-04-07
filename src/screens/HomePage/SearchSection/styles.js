@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 // 间隔
 const MARGIN = 14;
 
-export const index = StyleSheet.create({
+export const SearchSection = StyleSheet.create({
   container: {
     // flex: 1,
     backgroundColor: '#fff',
@@ -25,36 +25,42 @@ export const Address = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: MARGIN,
     marginHorizontal: MARGIN,
-  },
+  }
+});
 
+export const DropoffSwitch = StyleSheet.create({
+  container: {
+    marginTop: 6
+  }
+});
+
+export const City = StyleSheet.create({
+  container: {
+    width: 90,
+    marginRight: 10,
+  },
   text: {
     color: '#333',
     fontSize: 20,
   },
-
   placeholderText: {
     color: '#999',
-  },
+  }
+});
 
-  cityContainer: {
-    width: 90,
-    marginRight: 10,
+export const Site = StyleSheet.create({
+  container: {
+    flex: 1
   },
-
-  city: {
-    color: '#222',
+  text: {
+    color: '#333',
     fontSize: 20,
   },
-
-  siteContainer: {
-    flex: 1,
-  },
-
-  switchDropoffChildrenContainerStyle: {
-    // height: 22,
-    marginTop: 6,
-  },
+  placeholderText: {
+    color: '#999',
+  }
 });
+
 
 export const Schedule = StyleSheet.create({
   container: {
@@ -70,26 +76,35 @@ export const Time = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
+  }
+});
 
+export const TimeDay = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   text: {
     color: '#333',
-    fontSize: 16,
-  },
+    fontSize: 16
+  }
+});
 
-  timeAmountContainer: {
+export const TimeHours = StyleSheet.create({
+  text: {
+    color: '#333',
+    fontSize: 16
+  }
+});
+
+export const TimeAmount = StyleSheet.create({
+  container: {
     width: 30,
     marginHorizontal: MARGIN,
-    borderBottomColor: 'transparent',
+    borderBottomColor: 'transparent'
   },
-
-  timeAmount: {
-    textAlign: 'center',
-  },
-
-  timeDayContainer: {
-    flex: 1,
-  },
+  text: {
+    textAlign: 'center'
+  }
 });
 
 
