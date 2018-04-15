@@ -36,14 +36,6 @@ export const SearchSection = StyleSheet.create({
     color: COLOR.primary,
     fontWeight: 'bold',
   },
-
-  buttonContainer: {
-    paddingVertical: 20,
-  },
-
-  button: {
-    backgroundColor: '#4e7cdd',
-  },
 });
 
 
@@ -121,7 +113,6 @@ export const TimeAmount = StyleSheet.create({
   }
 });
 
-
 export const ItemBox = StyleSheet.create({
   container: {
     borderBottomWidth: LINE.width,
@@ -139,4 +130,16 @@ export const ItemBox = StyleSheet.create({
   childrenContainer: {
     marginTop: PADDING.md
   },
+});
+
+export const SearchButton = StyleSheet.create({
+  container: {
+    paddingVertical: 20,
+  },
+  button: {
+    backgroundColor: COLOR.primary
+  },
+  title: {
+    color: '#fff'
+  }
 });
