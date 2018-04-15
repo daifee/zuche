@@ -6,6 +6,7 @@ import {
   COMPONENT_BG_COLOR,
   TEXT_COLOR,
   TEXT_COLOR_SECONDARY,
+  TEXT_COLOR_PRIMARY,
   FONT_SIZE,
   LINE
 } from '../../../styles';
@@ -140,6 +141,6 @@ export const SearchButton = StyleSheet.create({
     backgroundColor: COLOR.primary
   },
   title: {
-    color: '#fff'
+    color: TEXT_COLOR_PRIMARY
   }
 });

@@ -30,6 +30,7 @@ export const FONT_SIZE = {
 
 export const TEXT_COLOR = 'rgba(0, 0, 0, 0.9)';
 export const TEXT_COLOR_SECONDARY = 'rgba(0, 0, 0, 0.50)';
+export const TEXT_COLOR_PRIMARY = 'rgba(255, 255, 255, 1)';
 
 export const BODY_BG_COLOR = '#f5f5f5';
 
