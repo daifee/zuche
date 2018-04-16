@@ -11,6 +11,7 @@ import UserProfile from './screens/UserProfile';
 import SelectCity from './screens/SelectCity';
 import SelectSite from './screens/SelectSite';
 import Search from './screens/Search';
+import { COLOR } from './styles';
 
 const tabBarIconMap = {
   HomePage: 'home',
@@ -42,8 +43,8 @@ const Root = TabNavigator({
   }),
   initialRouteName: 'HomePage',
   tabBarOptions: {
-    activeTintColor: 'tomato',
-    inactiveTintColor: 'gray',
+    activeTintColor: COLOR.primary,
+    inactiveTintColor: COLOR.normal,
   },
   tabBarComponent: TabBarBottom,
   tabBarPosition: 'bottom',

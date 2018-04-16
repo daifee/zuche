@@ -1,3 +1,13 @@
+/**
+ * UserPrifle:
+ * * Header
+ * * OrderSection
+ * * ProductSection
+ * * ConvenienceSection
+ * * OtherSection
+ */
+
+
 import React from 'react';
 import { View, Text } from 'react-native';
 
