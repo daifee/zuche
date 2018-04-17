@@ -8,25 +8,25 @@ import px from '../../../utils/px';
 
 export const Header = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 0,
     backgroundColor: COLOR.primary,
     paddingTop: px(70),
     paddingHorizontal: PADDING.md,
     // height: 200
   },
   topWrapper: {
-    flex: 1,
+    // flex: 0,
   }
 });
 
 export const User = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0,
     flexDirection: 'row'
   },
 
   rightContainer: {
-    flex: 1,
+    flex: 0,
     // flexDirection: 'row',
     marginLeft: px(30),
     // alignItems: 'center',
@@ -34,7 +34,7 @@ export const User = StyleSheet.create({
   },
 
   textContainer: {
-    flex: 1
+    // flex: 1
   },
 
   usernameText: {
@@ -42,12 +42,12 @@ export const User = StyleSheet.create({
   },
 
   vipContainer: {
-    flex: 1,
+    marginTop: px(6),
     flexDirection: 'row',
   },
 
   vipText: {
-    // marginTop: px(4),
+    marginHorizontal: px(4),
     color: TEXT_COLOR_PRIMARY
   }
 });
