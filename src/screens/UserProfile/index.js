@@ -6,10 +6,10 @@
  * * ConvenienceSection
  * * OtherSection
  */
-
-
 import React from 'react';
 import { View, Text } from 'react-native';
+import Header from './Header';
+import { UserProfile as styles } from './styles';
 
 class UserProfile extends React.Component {
   static navigationOptions = {
@@ -22,8 +22,11 @@ class UserProfile extends React.Component {
 
   render() {
     return (
-      <View>
-        <Text>UserProfile</Text>
+      <View style={styles.contianer}>
+        <Header />
+        <View style={styles.other}>
+          <Text>UserProfile</Text>
+        </View>
       </View>
     );
   }
