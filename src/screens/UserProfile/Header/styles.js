@@ -15,7 +15,8 @@ export const Header = StyleSheet.create({
     // height: 200
   },
   topWrapper: {
-    // flex: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   }
 });
 
@@ -51,3 +52,25 @@ export const User = StyleSheet.create({
     color: TEXT_COLOR_PRIMARY
   }
 });
+
+
+export const Notification = StyleSheet.create({
+  container: {
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  icon: {
+    marginRight: px(8),
+    marginTop: px(10),
+  },
+  redDot: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    width: px(16),
+    height: px(16),
+    borderRadius: px(16),
+    backgroundColor: 'red'
+  }
+});
+
