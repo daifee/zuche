@@ -25,12 +25,12 @@ export default function Header() {
           title="优惠券"
           value="7"
         />
-        <View style={styles.line} />
+        <View style={styles.divider} />
         <WalletItem
           title="代金券"
           value="0"
         />
-        <View style={styles.line} />
+        <View style={styles.divider} />
         <WalletItem
           title="钱包余额"
           value="￥0"

@@ -23,7 +23,7 @@ export const Header = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: px(40),
   },
-  line: {
+  divider: {
     flexShrink: 0,
     opacity: 0.4,
     width: StyleSheet.hairlineWidth,
