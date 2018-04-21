@@ -7,8 +7,9 @@
  * * OtherSection
  */
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import Header from './Header';
+import Body from './Body';
 import { UserProfile as styles } from './styles';
 
 class UserProfile extends React.Component {
@@ -24,9 +25,7 @@ class UserProfile extends React.Component {
     return (
       <View style={styles.contianer}>
         <Header />
-        <View style={styles.other}>
-          <Text>UserProfile</Text>
-        </View>
+        <Body />
       </View>
     );
   }
