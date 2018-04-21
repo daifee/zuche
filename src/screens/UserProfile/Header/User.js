@@ -2,7 +2,7 @@ import React from 'react';
 import {
   View,
   Text,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native';
 import { Avatar } from 'react-native-elements';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
@@ -14,17 +14,17 @@ import px from '../../../utils/px';
 export default function User() {
   return (
     <View style={styles.container}>
-      <TouchableHighlight>
+      <TouchableOpacity onPress={() => {}}>
         <Avatar
           rounded
           medium
           style={styles.image}
           source={avatarImage}
         />
-      </TouchableHighlight>
+      </TouchableOpacity>
 
-      <TouchableHighlight style={styles.rightContainer}>
-        <View style={styles.textContainer}>
+      <TouchableOpacity style={styles.rightContainer} onPress={() => {}}>
+        <React.Fragment>
           <View>
             <Text style={styles.usernameText}>username</Text>
           </View>
@@ -41,8 +41,8 @@ export default function User() {
               color={TEXT_COLOR_PRIMARY}
             />
           </View>
-        </View>
-      </TouchableHighlight>
+        </React.Fragment>
+      </TouchableOpacity>
     </View>
   );
 }

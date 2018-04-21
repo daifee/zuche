@@ -40,14 +40,8 @@ export const User = StyleSheet.create({
 
   rightContainer: {
     flex: 0,
-    // flexDirection: 'row',
     marginLeft: px(30),
-    // alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  textContainer: {
-    // flex: 1
   },
 
   usernameText: {

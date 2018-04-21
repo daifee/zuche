@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   View,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import { TEXT_COLOR_PRIMARY } from '../../../styles';
@@ -11,8 +11,13 @@ import { Notification as styles } from './styles';
 
 export default function Notification() {
   return (
-    <TouchableHighlight style={styles.container}>
-      <View>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        // todo
+      }}
+    >
+      <React.Fragment>
         <SimpleLineIcons
           name="bell"
           size={px(44)}
@@ -20,7 +25,7 @@ export default function Notification() {
           style={styles.icon}
         />
         <View style={styles.redDot} />
-      </View>
-    </TouchableHighlight>
+      </React.Fragment>
+    </TouchableOpacity>
   );
 }
