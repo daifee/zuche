@@ -17,6 +17,18 @@ export const Header = StyleSheet.create({
   topWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  bottomWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: px(40),
+  },
+  line: {
+    flexShrink: 0,
+    opacity: 0.4,
+    width: StyleSheet.hairlineWidth,
+    marginVertical: px(16),
+    backgroundColor: TEXT_COLOR_PRIMARY
   }
 });
 
@@ -71,6 +83,25 @@ export const Notification = StyleSheet.create({
     height: px(16),
     borderRadius: px(16),
     backgroundColor: 'red'
+  }
+});
+
+
+export const WalletItem = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  textValue: {
+    color: TEXT_COLOR_PRIMARY,
+    textAlign: 'center',
+    fontSize: px(36),
+    lineHeight: px(36 * 1.5)
+  },
+  textTitle: {
+    color: TEXT_COLOR_PRIMARY,
+    textAlign: 'center',
+    fontSize: px(24),
+    lineHeight: px(24 * 1.5)
   }
 });
 
