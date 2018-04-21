@@ -7,7 +7,7 @@
  * * OtherSection
  */
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import Header from './Header';
 import Body from './Body';
 import { UserProfile as styles } from './styles';
@@ -23,10 +23,10 @@ class UserProfile extends React.Component {
 
   render() {
     return (
-      <View style={styles.contianer}>
+      <ScrollView style={styles.contianer}>
         <Header />
         <Body />
-      </View>
+      </ScrollView>
     );
   }
 }
