@@ -35,8 +35,10 @@ export const TEXT_COLOR_PRIMARY = 'rgba(255, 255, 255, 1)';
 export const BODY_BG_COLOR = '#f5f5f5';
 
 export const COMPONENT_BG_COLOR = '#ffffff';
+export const COMPONENT_BG_COLOR_ACTIVE = '#DDDDDD';
 
 export const ITEM_BG_COLOR = '#ffffff';
+export const ITEM_BG_COLOR_ACTIVE = '#DDDDDD';
 
 export const LINE = {
   color: '#e8e8e8',

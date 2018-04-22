@@ -1,11 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { COMPONENT_BG_COLOR, PADDING } from '../../../styles';
-// import px from '../../../utils/'
 
 
 export const Body = StyleSheet.create({
   contianer: {
-    // flex: 1,
     overflow: 'hidden'
   }
 });

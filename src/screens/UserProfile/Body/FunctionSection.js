@@ -1,7 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, TouchableHighlight } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { FunctionSection as styles } from './styles';
+import { ITEM_BG_COLOR_ACTIVE } from '../../../styles';
 
 const items = [
   {
@@ -33,7 +34,13 @@ const items = [
 export default function FunctionSection() {
   return (
     <View style={styles.container}>
-      {items.map(item => <ListItem {...item} />)}
+      {items.map(item => (
+        <ListItem
+          component={TouchableHighlight}
+          underlayColor={ITEM_BG_COLOR_ACTIVE}
+          {...item}
+        />
+    ))}
     </View>
   );
 }
