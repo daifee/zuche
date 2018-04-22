@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { Customer as styles } from './styles';
 
 class Customer extends React.Component {
   static navigationOptions = {
@@ -12,8 +13,8 @@ class Customer extends React.Component {
 
   render() {
     return (
-      <View>
-        <Text>Customer</Text>
+      <View style={styles.container}>
+        <Text>TODO</Text>
       </View>
     );
   }
