@@ -62,6 +62,8 @@ export const User = StyleSheet.create({
 
 export const Notification = StyleSheet.create({
   container: {
+    paddingLeft: px(20),
+    paddingTop: px(10),
     position: 'relative',
     overflow: 'hidden',
   },
@@ -71,8 +73,8 @@ export const Notification = StyleSheet.create({
   },
   redDot: {
     position: 'absolute',
-    top: 0,
-    right: 0,
+    top: px(10),
+    right: px(6),
     width: px(16),
     height: px(16),
     borderRadius: px(16),
