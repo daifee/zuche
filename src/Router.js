@@ -41,7 +41,7 @@ const Root = TabNavigator({
       return <SimpleLineIcons name={iconName} size={25} color={tintColor} />;
     },
   }),
-  initialRouteName: 'UserProfile',
+  initialRouteName: 'HomePage',
   tabBarOptions: {
     activeTintColor: COLOR.primary,
     inactiveTintColor: COLOR.normal,

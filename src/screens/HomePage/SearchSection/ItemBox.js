@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { ItemBox as styles } from './styles';
 
 
@@ -10,14 +10,14 @@ export default function ItemBox(props) {
   } = props;
 
   return (
-    <View {...rest} style={[styles.container, rest.style]}>
+    <TouchableOpacity onPress={() => {}} {...rest} style={[styles.container, rest.style]}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{title}</Text>
       </View>
       <View style={[styles.childrenContainer, childrenContainerStyle]}>
         {children}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
