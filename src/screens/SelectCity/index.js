@@ -1,3 +1,9 @@
+/**
+ * 拆分组件：
+ * * Search
+ * * RegionList
+ * * CityList
+ */
 import React from 'react';
 import { View, Text } from 'react-native';
 
