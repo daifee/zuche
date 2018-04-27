@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { View, Text, TouchableHighlight } from 'react-native';
 import { RegionItem as styles } from './styles';
 import { ITEM_BG_COLOR } from '../../../styles';
+import Region from '../../../models/Region';
 
 export default function RegionItem(props) {
   const { region } = props;
+  console.log(region);
   return (
     <View style={styles.container}>
       <TouchableHighlight
@@ -13,14 +15,12 @@ export default function RegionItem(props) {
         underlayColor={ITEM_BG_COLOR}
         onPress={() => {}}
       >
-        <Text style={styles.text}>{region.name}</Text>
+        <Text style={styles.text}>{region.cnName}</Text>
       </TouchableHighlight>
     </View>
   );
 }
 
 RegionItem.propTypes = {
-  region: PropTypes.shape({
-    name: PropTypes.string
-  }).isRequired
+  region: PropTypes.instanceOf(Region).isRequired
 };
