@@ -1,6 +1,8 @@
 // @flow
 
-export default class Site {
+import Model from './Model';
+
+export default class Site extends Model {
   id:string;
   cnName: string;
   enName: ?string;

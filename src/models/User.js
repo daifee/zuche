@@ -2,8 +2,9 @@
  * @flow
  * User
  */
+import Model from './Model';
 
-export default class User {
+export default class User extends Model {
   id: string;
 }
 
