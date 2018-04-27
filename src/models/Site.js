@@ -2,8 +2,8 @@
 
 export default class Site {
   id:string;
-  name_cn: string;
-  name_en: ?string;
+  cnName: string;
+  enName: ?string;
   lat: ?number;
   lng: ?number;
 }

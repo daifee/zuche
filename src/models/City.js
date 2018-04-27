@@ -2,10 +2,10 @@
 
 export default class City {
   id:string;
-  name_cn: string;
-  name_en: ?string;
+  cnName: string;
+  enName: ?string;
   lat: ?number;
   lng: ?number;
-  timezone_offset: ?number
+  timezone: ?number
 }
 

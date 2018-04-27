@@ -14,7 +14,7 @@ export default function City(props) {
   return (
     <ItemBox title={title} style={styles.container}>
       <Text style={[textStyle]}>
-        {empty ? '请选择' : city.name_cn}
+        {empty ? '请选择' : city.cnName}
       </Text>
     </ItemBox>
   );

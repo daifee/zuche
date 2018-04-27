@@ -14,7 +14,7 @@ export default function Site(props) {
   return (
     <ItemBox title={title} style={styles.container}>
       <Text style={[textStyle]}>
-        {empty ? '请选择' : site.name_cn}
+        {empty ? '请选择' : site.cnName}
       </Text>
     </ItemBox>
   );
