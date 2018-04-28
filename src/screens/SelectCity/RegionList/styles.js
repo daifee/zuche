@@ -3,28 +3,30 @@ import {
   ITEM_BG_COLOR_ACTIVE,
   ITEM_BG_COLOR,
   PADDING,
-  COLOR
+  COLOR,
+  LINE
 } from '../../../styles';
 import px from '../../../utils/px';
 
 export const RegionList = StyleSheet.create({
-  // flexShrink: 0,
+  separator: {
+    height: LINE.width,
+    backgroundColor: LINE.color
+  },
+  separatorActive: {
+    backgroundColor: 'transparent'
+  }
 });
 
 
 export const RegionItem = StyleSheet.create({
   container: {
-
-  },
-  button: {
     height: px(84),
-    width: px(180),
     paddingHorizontal: PADDING.md,
     backgroundColor: ITEM_BG_COLOR_ACTIVE,
-    // alignItems: 'flex-end',
     justifyContent: 'center',
   },
-  buttonSelected: {
+  containerSelected: {
     backgroundColor: ITEM_BG_COLOR,
     position: 'relative'
   },

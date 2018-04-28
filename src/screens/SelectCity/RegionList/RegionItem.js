@@ -6,30 +6,26 @@ import { ITEM_BG_COLOR } from '../../../styles';
 import Region from '../../../models/Region';
 
 export default function RegionItem(props) {
-  const { region, selected } = props;
+  const { region, selected, ...rest } = props;
 
   return (
-    <View style={styles.container}>
-      {
-        selected
-        ? (
-          <View style={[styles.button, styles.buttonSelected]}>
-            <View style={styles.sign} />
-            <Text style={styles.text}>{region.cnName}</Text>
-          </View>
-        )
-        : (
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor={ITEM_BG_COLOR}
-            onPress={() => {}}
-          >
-            <Text style={styles.text}>{region.cnName}</Text>
-          </TouchableHighlight>
-        )
-      }
-
-    </View>
+    selected
+      ? (
+        <View {...rest} style={[styles.container, styles.containerSelected]}>
+          <View style={styles.sign} />
+          <Text style={styles.text}>{region.cnName}</Text>
+        </View>
+      )
+      : (
+        <TouchableHighlight
+          {...rest}
+          style={styles.container}
+          underlayColor={ITEM_BG_COLOR}
+          onPress={() => {}}
+        >
+          <Text style={styles.text}>{region.cnName}</Text>
+        </TouchableHighlight>
+      )
   );
 }
 

@@ -1,7 +1,8 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 import RegionItem from './RegionItem';
 import RegionCollection from '../../../models/RegionCollection';
+import { RegionList as styles } from './styles';
 
 const data = new RegionCollection([
   { id: '0', cnName: '热门' },
@@ -29,11 +30,23 @@ export default function RegionList() {
   return (
     <FlatList
       data={data.toArray()}
-      renderItem={({ item }) => (<RegionItem
-        region={item}
-        selected={item.id === '0'}
-      />)}
+      renderItem={({ item, separators }) => {
+        return (<RegionItem
+          region={item}
+          selected={item.id === '0'}
+          onShowUnderlay={separators.highlight}
+          onHideUnderlay={separators.unhighlight}
+        />);
+      }}
       keyExtractor={region => `${region.id}`}
+      ItemSeparatorComponent={({ highlighted }) => {
+        const style = [styles.separator];
+        if (highlighted) {
+          style.push(styles.separatorActive);
+        }
+
+        return <View style={style} />;
+      }}
     />
   );
 }
