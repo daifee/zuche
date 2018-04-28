@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
 import {
   ITEM_BG_COLOR_ACTIVE,
-  PADDING
+  ITEM_BG_COLOR,
+  PADDING,
+  COLOR
 } from '../../../styles';
 import px from '../../../utils/px';
 
@@ -21,6 +23,16 @@ export const RegionItem = StyleSheet.create({
     backgroundColor: ITEM_BG_COLOR_ACTIVE,
     // alignItems: 'flex-end',
     justifyContent: 'center',
+  },
+  buttonSelected: {
+    backgroundColor: ITEM_BG_COLOR,
+    position: 'relative'
+  },
+  sign: {
+    position: 'absolute',
+    width: px(4),
+    height: px(36),
+    backgroundColor: COLOR.primary
   },
   text: {
     fontSize: px(24),

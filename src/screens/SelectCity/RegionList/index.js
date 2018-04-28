@@ -29,7 +29,10 @@ export default function RegionList() {
   return (
     <FlatList
       data={data.toArray()}
-      renderItem={({ item }) => <RegionItem region={item} />}
+      renderItem={({ item }) => (<RegionItem
+        region={item}
+        selected={item.id === '0'}
+      />)}
       keyExtractor={region => `${region.id}`}
     />
   );
