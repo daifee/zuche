@@ -8,6 +8,7 @@ import React from 'react';
 import { View } from 'react-native';
 import SearchBar from './SearchBar';
 import RegionList from './RegionList';
+import CityList from './CityList';
 import { SelectCity as styles } from './styles';
 
 class SelectCity extends React.Component {
@@ -26,8 +27,12 @@ class SelectCity extends React.Component {
           <SearchBar />
         </View>
         <View style={styles.listWrapper}>
-          <RegionList />
-          <RegionList />
+          <View style={styles.regionListWrapper}>
+            <RegionList />
+          </View>
+          <View style={styles.cityListWrapper}>
+            <CityList />
+          </View>
         </View>
       </View>
     );

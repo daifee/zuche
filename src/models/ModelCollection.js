@@ -10,6 +10,10 @@ export default class ModelCollection {
     this.list = docArr.map(doc => new M(doc));
   }
 
+  map(callback) {
+    return this.list.map(callback);
+  }
+
   toJSON(): DOC_ARRAY {
     const result = this.list.map(model => model.toJSON());
 
