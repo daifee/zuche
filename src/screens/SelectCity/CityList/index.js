@@ -1,5 +1,5 @@
 import React from 'react';
-import { SectionList } from 'react-native';
+import { SectionList, FlatList } from 'react-native';
 import CityItem from './CityItem';
 import CityCollection from '../../../models/CityCollection';
 import CityGroupCollection from '../../../models/CityGroupCollection';
@@ -57,25 +57,41 @@ let data = sourceData.map((cityGroup) => {
 
 data = new CityGroupCollection(data);
 
-export default function CityList() {
-  const sections = data.map((cityGroup) => {
-    return {
-      title: cityGroup.title,
-      data: cityGroup.list.toArray()
-    };
-  });
+export default class CityList extends React.Component {
+  renderSection({ section }) {
+    return (
+      <FlatList
+        key={section.title}
+        data={section.data}
+        numColumns={2}
+        renderItem={({ item }) => {
+          return (<CityItem
+            city={item}
+            selected={item.id === '0'}
+          />);
+        }}
+        keyExtractor={city => `${city.id}`}
+      />
+    );
+  }
 
-  return (
-    <SectionList
-      sections={sections}
-      renderItem={({ item }) => {
-        return (<CityItem
-          city={item}
-          selected={item.id === '0'}
-        />);
-      }}
-      keyExtractor={city => `${city.id}`}
-    />
-  );
+  render() {
+    const sections = data.map((cityGroup) => {
+      return {
+        title: cityGroup.title,
+        data: cityGroup.list.toArray()
+      };
+    });
+
+    return (
+      <SectionList
+        sections={sections}
+        renderItem={this.renderSection}
+        keyExtractor={(city) => {
+          return `${city.id}`;
+        }}
+      />
+    );
+  }
 }
 

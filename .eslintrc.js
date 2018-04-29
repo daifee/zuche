@@ -6,7 +6,8 @@ module.exports = {
     "comma-dangle": 0,
     "import/prefer-default-export": 0,
     "react/require-default-props": 0,
-    "arrow-body-style": 0
+    "arrow-body-style": 0,
+    "class-methods-use-this": 0
     // "camelcase": 0
     // "react/forbid-prop-types": 0
   }
