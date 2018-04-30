@@ -8,7 +8,7 @@ import {
 export const SearchBar = StyleSheet.create({
   container: {
     backgroundColor: COMPONENT_BG_COLOR,
-    flex: 1,
+    flex: 0,
   },
   input: {
     backgroundColor: BODY_BG_COLOR

@@ -5,11 +5,12 @@ import { SearchBar as styles } from './styles';
 
 
 export default function SearchBar(props) {
-  const { containerStyle, inputStyle } = props;
+  const { containerStyle, inputStyle, ...rest } = props;
 
   return (
     <SearchBarComponent
       lightTheme
+      {...rest}
       containerStyle={[styles.container, containerStyle]}
       inputStyle={[styles.input, inputStyle]}
     />

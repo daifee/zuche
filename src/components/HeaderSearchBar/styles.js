@@ -25,5 +25,6 @@ export const HeaderSearchBar = StyleSheet.create({
     //
     borderTopWidth: 0,
     borderBottomWidth: 0,
+    flex: 1
   }
 });

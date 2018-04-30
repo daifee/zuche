@@ -1,17 +1,23 @@
 import React from 'react';
-import { View } from 'react-native';
-import { SearchBar as SearchBarComponent } from 'react-native-elements';
+import { View, TouchableWithoutFeedback } from 'react-native';
 import { SearchBar as styles } from './styles';
+import SearchBarComponent from '../../../components/SearchBar';
 
 export default function SearchBar() {
   return (
-    <View>
+    <View style={styles.container}>
       <SearchBarComponent
-        lightTheme
         placeholder="支持输入中文/拼音/英文"
         containerStyle={styles.searchBarContainer}
         inputStyle={styles.input}
       />
+      <TouchableWithoutFeedback
+        onPress={() => {
+          // console.log('feedback');
+        }}
+      >
+        <View style={styles.touchableContainer} />
+      </TouchableWithoutFeedback>
     </View>
   );
 }

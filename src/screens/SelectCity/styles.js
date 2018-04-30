@@ -8,6 +8,7 @@ export const SelectCity = StyleSheet.create({
   },
   searchBarWrapper: {
     flexShrink: 0,
+    flex: 0
   },
   listWrapper: {
     flex: 1,

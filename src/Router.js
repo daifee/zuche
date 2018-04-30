@@ -71,7 +71,7 @@ const Stack = StackNavigator({
     screen: Search,
   }
 }, {
-  initialRouteName: 'SearchCity',
+  initialRouteName: 'SelectCity',
   headerMode: 'screen',
 });
 
