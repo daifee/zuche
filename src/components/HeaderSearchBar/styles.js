@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COMPONENT_BG_COLOR, COLOR } from '../../styles';
+import { COMPONENT_BG_COLOR, COLOR, LINE } from '../../styles';
 import px from '../../utils/px';
 
 
@@ -7,7 +7,10 @@ export const HeaderSearchBar = StyleSheet.create({
   container: {
     flexDirection: 'row',
     paddingTop: 20,
-    backgroundColor: COMPONENT_BG_COLOR
+    backgroundColor: COMPONENT_BG_COLOR,
+    borderBottomColor: LINE.color,
+    borderWidth: LINE.width,
+    borderStyle: 'solid'
   },
 
   button: {
