@@ -5,7 +5,9 @@ import px from '../../utils/px';
 
 export const HeaderSearchBar = StyleSheet.create({
   container: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    paddingTop: 20,
+    backgroundColor: COMPONENT_BG_COLOR
   },
 
   button: {
