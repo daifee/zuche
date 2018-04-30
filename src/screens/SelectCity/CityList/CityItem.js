@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Text, TouchableHighlight } from 'react-native';
 import City from '../../../models/City';
 import { CityItem as styles } from './styles';
-import { ITEM_BG_COLOR } from '../../../styles';
+import { ITEM_BG_COLOR_ACTIVE } from '../../../styles';
 
 
 export default function CityItem(props) {
@@ -20,7 +20,7 @@ export default function CityItem(props) {
         <TouchableHighlight
           {...rest}
           style={styles.container}
-          underlayColor={ITEM_BG_COLOR}
+          underlayColor={ITEM_BG_COLOR_ACTIVE}
           onPress={() => {}}
         >
           <Text>{city.cnName}</Text>

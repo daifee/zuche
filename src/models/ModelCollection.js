@@ -2,7 +2,10 @@
  * Model的集合
  */
 import Model from './Model';
-import { type DOC_ARRAY } from './flow.type';
+import {
+  type DOC_ARRAY,
+  type COLLECTION_ITERATEE
+} from './flow.type';
 
 export default class ModelCollection {
   constructor(M = Model, docArr: DOC_ARRAY) {
@@ -10,8 +13,13 @@ export default class ModelCollection {
     this.list = docArr.map(doc => new M(doc));
   }
 
-  map(callback) {
+  map(callback: COLLECTION_ITERATEE): Array<any> {
     return this.list.map(callback);
+  }
+
+  each(callback: COLLECTION_ITERATEE): ModelCollection {
+    this.list.forEach(callback);
+    return this;
   }
 
   toJSON(): DOC_ARRAY {
