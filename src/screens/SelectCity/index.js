@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { View } from 'react-native';
-import SearchBar from './SearchBar';
+import SearchBarPlaceholder from '../../components/SearchBarPlaceholder';
 import RegionList from './RegionList';
 import CityList from './CityList';
 import { SelectCity as styles } from './styles';
@@ -24,7 +24,7 @@ class SelectCity extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.searchBarWrapper}>
-          <SearchBar />
+          <SearchBarPlaceholder />
         </View>
         <View style={styles.listWrapper}>
           <View style={styles.regionListWrapper}>
