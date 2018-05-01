@@ -4,8 +4,9 @@
  * * ResultList
  */
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { View } from 'react-native';
 import Header from '../../components/HeaderSearchBar';
+import ResultList from './ResultList';
 
 export default class SearchCity extends React.Component {
   static navigationOptions = {
@@ -20,7 +21,7 @@ export default class SearchCity extends React.Component {
     return (
       <View>
         <Header />
-        <FlatList />
+        <ResultList />
       </View>
     );
   }

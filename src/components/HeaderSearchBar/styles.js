@@ -9,7 +9,7 @@ export const HeaderSearchBar = StyleSheet.create({
     paddingTop: 20,
     backgroundColor: COMPONENT_BG_COLOR,
     borderBottomColor: LINE.color,
-    borderWidth: LINE.width,
+    borderBottomWidth: LINE.width,
     borderStyle: 'solid'
   },
 
