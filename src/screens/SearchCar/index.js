@@ -1,18 +1,21 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-class Search extends React.Component {
+export default class SearchCar extends React.Component {
+  static navigationOptions = {
+    header: null
+  };
+
   componentDidMount() {
-    // TODO
+    // todo
   }
 
   render() {
     return (
       <View>
-        <Text>{this.displayName}</Text>
+        <Text>SearchCar</Text>
       </View>
     );
   }
 }
 
-export default Search;

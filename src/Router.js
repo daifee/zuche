@@ -10,7 +10,7 @@ import Customer from './screens/Customer';
 import UserProfile from './screens/UserProfile';
 import SelectCity from './screens/SelectCity';
 import SelectSite from './screens/SelectSite';
-import Search from './screens/Search';
+import SearchCar from './screens/SearchCar';
 import SearchCity from './screens/SearchCity';
 import SearchSite from './screens/SearchSite';
 import { COLOR } from './styles';
@@ -71,11 +71,11 @@ const Stack = StackNavigator({
   SearchSite: {
     screen: SearchSite
   },
-  Search: {
-    screen: Search,
+  SearchCar: {
+    screen: SearchCar,
   }
 }, {
-  initialRouteName: 'SearchSite',
+  initialRouteName: 'SearchCar',
   headerMode: 'screen',
 });
 
