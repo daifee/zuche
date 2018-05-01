@@ -21,7 +21,8 @@ export const SelectSite = StyleSheet.create({
     backgroundColor: ITEM_BG_COLOR_ACTIVE
   },
   siteListWrapper: {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: ITEM_BG_COLOR_ACTIVE
   }
 });
 
