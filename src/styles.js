@@ -22,10 +22,10 @@ export const PADDING = {
 };
 
 export const FONT_SIZE = {
-  lg: px(44),
-  md: px(32),
-  sm: px(24),
-  xs: px(20)
+  lg: px(40),
+  md: px(34),
+  sm: px(28),
+  xs: px(22)
 };
 
 export const TEXT_COLOR = 'rgba(0, 0, 0, 0.9)';
