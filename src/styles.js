@@ -47,3 +47,4 @@ export const LINE = {
 
 export const BORDER_RADIUS = '';
 
+export const STATUS_BAR_HEIGHT = 20;
