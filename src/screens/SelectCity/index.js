@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { View } from 'react-native';
-import SearchBarPlaceholder from '../../components/SearchBarPlaceholder';
+import { SearchBarPlaceholder } from '../../components/SearchBar';
 import RegionList from './RegionList';
 import CityList from './CityList';
 import { SelectCity as styles } from './styles';
