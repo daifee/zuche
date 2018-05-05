@@ -7,11 +7,14 @@ import px from './utils/px';
 export const COLOR = {
   primary: '#254FCB',
   primaryActive: '#506fca',
-  info: '',
-  success: '',
-  error: '',
-  highlight: '',
-  warning: '',
+  info: '#17a2b8',
+  infoActive: '#117a8b',
+  success: '#28a745',
+  successActive: '#1e7e34',
+  danger: '#dc3545',
+  dangerActive: '#bd2130',
+  warning: '#ffc107',
+  warningActive: '#d39e00',
   normal: '#d9d9d9'
 };
 
