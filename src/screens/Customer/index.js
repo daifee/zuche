@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { Customer as styles } from './styles';
+import Header from '../../components/Header';
 
 class Customer extends React.Component {
   static navigationOptions = {
-    header: null
+    header: Header
   };
 
   componentDidMount() {

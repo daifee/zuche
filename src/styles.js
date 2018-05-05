@@ -47,4 +47,6 @@ export const LINE = {
 
 export const BORDER_RADIUS = '';
 
+// nav-bar包含status-bar
 export const STATUS_BAR_HEIGHT = 20;
+export const NAV_BAR_HEIGHT = 64;

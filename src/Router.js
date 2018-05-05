@@ -75,7 +75,7 @@ const Stack = StackNavigator({
     screen: SearchCar,
   }
 }, {
-  initialRouteName: 'SelectCity',
+  initialRouteName: 'Root',
   headerMode: 'screen',
 });
 
