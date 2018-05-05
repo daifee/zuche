@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import { BackButton as styles } from './styles';
 import { TEXT_COLOR_SECONDARY, FONT_SIZE } from '../../styles';
 
-const TouchableOpacityPropTypesStyle = TouchableOpacity.propTypes.style;
+const ViewPropTypesStyle = View.propTypes.style;
 
 export default function BackButton(props) {
   const {
@@ -24,8 +24,9 @@ BackButton.defaultProps = {
   iconColor: TEXT_COLOR_SECONDARY
 };
 
+
 BackButton.propTypes = {
-  style: TouchableOpacityPropTypesStyle,
+  style: ViewPropTypesStyle,
   iconSize: PropTypes.number,
   iconColor: PropTypes.string
 };

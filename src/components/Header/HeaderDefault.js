@@ -15,6 +15,11 @@ export default function HeaderDefault(props) {
   );
 }
 
+HeaderDefault.defaultProps = {
+  headerProps: {},
+  backButtonProps: {},
+  titleProps: {}
+};
 
 HeaderDefault.propTypes = {
   headerProps: PropTypes.shape({
