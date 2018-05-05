@@ -5,12 +5,12 @@
  */
 import React from 'react';
 import { View } from 'react-native';
-import Header from '../../components/HeaderSearchBar';
+import { HeaderSearchBar as Header } from '../../components/Header';
 import ResultList from './ResultList';
 
 export default class SearchCity extends React.Component {
   static navigationOptions = {
-    header: null
+    header: Header
   };
 
   componentDidMount() {
@@ -20,7 +20,6 @@ export default class SearchCity extends React.Component {
   render() {
     return (
       <View>
-        <Header />
         <ResultList />
       </View>
     );

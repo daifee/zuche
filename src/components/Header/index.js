@@ -1,4 +1,8 @@
+
 import HeaderDefault from './HeaderDefault';
+import HeaderSearchBar from './HeaderSearchBar';
 
-
-export default HeaderDefault;
+export {
+  HeaderDefault,
+  HeaderSearchBar
+};

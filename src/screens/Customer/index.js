@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Customer as styles } from './styles';
-import Header from '../../components/Header';
+import { HeaderSearchBar as Header } from '../../components/Header';
 import Button, { ButtonPrimary } from '../../components/Button';
 
 class Customer extends React.Component {

@@ -1,8 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import { SearchBar as SearchBarComponent } from 'react-native-elements';
 import { SearchBar as styles } from './styles';
 
+const ViewPropTypesStyle = View.propTypes.style;
 
 export default function SearchBar(props) {
   const { containerStyle, inputStyle, ...rest } = props;
@@ -19,6 +21,6 @@ export default function SearchBar(props) {
 
 SearchBar.propTypes = {
   ...SearchBarComponent.propTypes,
-  containerStyle: PropTypes.number,
-  inputStyle: PropTypes.number
+  containerStyle: ViewPropTypesStyle,
+  inputStyle: ViewPropTypesStyle
 };
