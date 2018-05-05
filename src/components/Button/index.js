@@ -1,28 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { TouchableHighlight, View } from 'react-native';
-import { Button as styles } from './styles';
 
-const TouchableHighlightPropTypesStyle = TouchableHighlight.propTypes.style;
-const ViewPropTypesStyle = View.propTypes.style;
+import Button from './Button';
+import ButtonPrimary from './ButtonPrimary';
+// import
 
-export default function Button(props) {
-  const {
-    children, style, contentContainerStyle, ...rest
-  } = props;
+export default Button;
 
-  return (
-    <TouchableHighlight style={[styles.container, style]} {...rest}>
-      <View style={[styles.contentContainer, contentContainerStyle]}>
-        {children}
-      </View>
-    </TouchableHighlight>
-  );
-}
-
-Button.propTypes = {
-  style: TouchableHighlightPropTypesStyle,
-  children: PropTypes.node.isRequired,
-  contentContainerStyle: ViewPropTypesStyle
-};
-
+export { ButtonPrimary };

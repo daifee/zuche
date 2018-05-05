@@ -6,6 +6,7 @@ import px from './utils/px';
 
 export const COLOR = {
   primary: '#254FCB',
+  primaryActive: '#506fca',
   info: '',
   success: '',
   error: '',
