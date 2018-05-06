@@ -4,6 +4,8 @@ import { Customer as styles } from './styles';
 import { HeaderSearchBar as Header } from '../../components/Header';
 import Button, { ButtonPrimary } from '../../components/Button';
 import List from '../../components/List';
+import CheckBox from '../../components/CheckBox';
+
 
 class Customer extends React.Component {
   static navigationOptions = {
@@ -28,9 +30,9 @@ class Customer extends React.Component {
             rightArrow
           />
           <List.Item
-            header="header"
-            body="body"
-            footer="footer"
+            header={<CheckBox disable />}
+            body={<CheckBox checked disable />}
+            footer={<CheckBox />}
           />
         </List>
       </View>
