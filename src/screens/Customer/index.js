@@ -25,6 +25,7 @@ class Customer extends React.Component {
             header="header"
             body="body"
             footer="footer"
+            rightArrow
           />
           <List.Item
             header="header"

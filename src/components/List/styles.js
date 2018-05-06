@@ -26,11 +26,12 @@ export const List = StyleSheet.create({
 
 export const Item = StyleSheet.create({
   container: {
+    flex: 0,
     flexDirection: 'row',
     position: 'relative',
     backgroundColor: ITEM_BG_COLOR,
     justifyContent: 'space-between',
-    paddingVertical: PADDING.md,
+    padding: PADDING.md,
   },
   divider: {
     ...divider,
@@ -56,5 +57,13 @@ export const ItemFooter = StyleSheet.create({
   container: {
     flexShrink: 0,
     marginLeft: PADDING.md,
+  }
+});
+
+
+export const RightArrow = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    paddingLeft: PADDING.md,
   }
 });

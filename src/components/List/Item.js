@@ -6,6 +6,7 @@ import ItemBody from './ItemBody';
 import ItemFooter from './ItemFooter';
 import { Item as styles } from './styles';
 import { ITEM_BG_COLOR_ACTIVE } from '../../styles';
+import RightArrow from './RightArrow';
 
 const ViewPropTypesStyle = View.propTypes.style;
 
@@ -19,6 +20,7 @@ export default function Item(props) {
     bodyContainerStyle,
     footer,
     footerContainerStyle,
+    rightArrow,
     ...rest
   } = props;
 
@@ -44,6 +46,7 @@ export default function Item(props) {
             {footer}
           </ItemFooter>
         ) : null}
+        {rightArrow && <RightArrow />}
         <View style={[styles.divider, dividerStyle]} />
       </React.Fragment>
     </TouchableHighlight>
@@ -58,5 +61,6 @@ Item.propTypes = {
   body: PropTypes.node,
   bodyContainerStyle: ViewPropTypesStyle,
   footer: PropTypes.node,
-  footerContainerStyle: ViewPropTypesStyle
+  footerContainerStyle: ViewPropTypesStyle,
+  rightArrow: PropTypes.bool
 };
