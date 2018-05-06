@@ -6,6 +6,7 @@ import Button, { ButtonPrimary } from '../../components/Button';
 import List from '../../components/List';
 import CheckBox from '../../components/CheckBox';
 import CheckButton from '../../components/CheckButton';
+import SideMenu, { SideMenuItem } from '../../components/SideMenu';
 
 class Customer extends React.Component {
   static navigationOptions = {
@@ -43,7 +44,20 @@ class Customer extends React.Component {
           paddingVertical: 20
         }}
         >
-          <CheckButton disable checked style={{ width: 100 }}>请选择</CheckButton>
+          <CheckButton disable checked style={{ width: 100 }}>
+            请选择
+          </CheckButton>
+
+          <SideMenu>
+            <SideMenuItem>全部</SideMenuItem>
+            <SideMenuItem selected>
+              <Text>中国</Text>
+              <Text>China</Text>
+            </SideMenuItem>
+            <SideMenuItem>德哥</SideMenuItem>
+            <SideMenuItem>法国</SideMenuItem>
+            <SideMenuItem>美利坚共和党</SideMenuItem>
+          </SideMenu>
         </View>
       </View>
     );
