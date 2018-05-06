@@ -10,7 +10,7 @@ export default function TextPrune(props) {
   if (typeof children === 'string') {
     return (<Text {...rest}>{children}</Text>);
   }
-  return children;
+  return children || null;
 }
 
 TextPrune.propTypes = {

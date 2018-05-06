@@ -49,7 +49,7 @@ export const LINE = {
   width: StyleSheet.hairlineWidth,
 };
 
-export const BORDER_RADIUS = '';
+export const BORDER_RADIUS = 4;
 
 // nav-bar包含status-bar
 export const STATUS_BAR_HEIGHT = 20;

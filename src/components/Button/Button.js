@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableHighlight, View } from 'react-native';
 import { Button as styles } from './styles';
-import Text from '../Text';
+import { TextPrune } from '../Text';
 
 const ViewPropTypesStyle = View.propTypes.style;
-const TextPropTypesStyle = Text.propTypes.style;
+const TextPropTypesStyle = TextPrune.propTypes.style;
 
 export default function Button(props) {
   const {
@@ -15,9 +15,7 @@ export default function Button(props) {
   return (
     <TouchableHighlight style={[styles.container, style]} {...rest}>
       <View style={[styles.contentContainer, contentContainerStyle]}>
-        {typeof children === 'string' ? (
-          <Text style={[styles.textStyle, textStyle]}>{children}</Text>
-        ) : children}
+        <TextPrune style={[styles.textStyle, textStyle]}>{children}</TextPrune>
       </View>
     </TouchableHighlight>
   );
