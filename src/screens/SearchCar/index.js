@@ -7,13 +7,13 @@
  */
 import React from 'react';
 import { View, Text } from 'react-native';
-import Header from './Header';
+import { HeaderSchedule as Header } from '../../components/Header';
 import HotOptionList from './HotOptionList';
 import { SearchCar as styles } from './styles';
 
 export default class SearchCar extends React.Component {
   static navigationOptions = {
-    header: null
+    header: Header
   };
 
   componentDidMount() {
@@ -23,9 +23,6 @@ export default class SearchCar extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.headerWrapper}>
-          <Header />
-        </View>
         <View style={styles.hotOptionListWrapper}>
           <HotOptionList />
         </View>
