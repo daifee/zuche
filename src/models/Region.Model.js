@@ -1,9 +1,9 @@
 /**
  * Region 地区
  */
-import Model from './Model';
+import BaseModel from './Base.Model';
 
-export default class Region extends Model {
+export default class RegionModel extends BaseModel {
   id: string;
   cnName: string;
   enName: ?string;

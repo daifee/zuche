@@ -1,10 +1,10 @@
 /**
  * @flow
- * City 城市
+ * CityModel
  */
-import Model from './Model';
+import BaseModel from './Base.Model';
 
-export default class City extends Model {
+export default class CityModel extends BaseModel {
   id: string;
   cnName: string;
   enName: ?string;

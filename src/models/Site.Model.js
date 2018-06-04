@@ -1,8 +1,8 @@
 // @flow
 
-import Model from './Model';
+import BaseModel from './Base.Model';
 
-export default class Site extends Model {
+export default class SiteModel extends BaseModel {
   id:string;
   cnName: string;
   enName: ?string;
