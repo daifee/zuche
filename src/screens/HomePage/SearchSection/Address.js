@@ -1,8 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import SiteModel from '../../../models/Site';
-import CityModel from '../../../models/City';
+import SiteModel from '../../../models/Site.Model';
+import CityModel from '../../../models/City.Model';
 import City from './City';
 import Site from './Site';
 import DropoffSwitch from './DropoffSwitch';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
 import RegionItem from './RegionItem';
-import RegionCollection from '../../../models/RegionCollection';
+import RegionCollection from '../../../models/Region.Collection';
 import { RegionList as styles } from './styles';
 
 const data = new RegionCollection([

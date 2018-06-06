@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import ItemBox from './ItemBox';
-import CityModel from '../../../models/City';
+import CityModel from '../../../models/City.Model';
 import { City as styles } from './styles';
 
 export default function City(props) {

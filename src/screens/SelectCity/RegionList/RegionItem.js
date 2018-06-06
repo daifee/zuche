@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Text, TouchableHighlight } from 'react-native';
 import { RegionItem as styles } from './styles';
 import { ITEM_BG_COLOR } from '../../../styles';
-import Region from '../../../models/Region';
+import RegionModel from '../../../models/Region.Model';
 
 export default function RegionItem(props) {
   const { region, selected, ...rest } = props;
@@ -30,6 +30,6 @@ export default function RegionItem(props) {
 }
 
 RegionItem.propTypes = {
-  region: PropTypes.instanceOf(Region).isRequired,
+  region: PropTypes.instanceOf(RegionModel).isRequired,
   selected: PropTypes.bool.isRequired
 };

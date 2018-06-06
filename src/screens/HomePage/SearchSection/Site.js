@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import ItemBox from './ItemBox';
-import SiteModel from '../../../models/Site';
+import SiteModel from '../../../models/Site.Model';
 import { Site as styles } from './styles';
 
 export default function Site(props) {

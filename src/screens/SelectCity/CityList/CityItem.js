@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, TouchableHighlight } from 'react-native';
-import City from '../../../models/City';
+import CityModel from '../../../models/City.Model';
 import { CityItem as styles } from './styles';
 import { ITEM_BG_COLOR_ACTIVE } from '../../../styles';
 
@@ -30,6 +30,6 @@ export default function CityItem(props) {
 }
 
 CityItem.propTypes = {
-  city: PropTypes.instanceOf(City).isRequired,
+  city: PropTypes.instanceOf(CityModel).isRequired,
   selected: PropTypes.bool.isRequired
 };

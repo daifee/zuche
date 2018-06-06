@@ -1,7 +1,7 @@
 import React from 'react';
 import { SectionList, FlatList, View, Text } from 'react-native';
 import CityItem from './CityItem';
-import CityCollection from '../../../models/CityCollection';
+import CityCollection from '../../../models/City.Collection';
 import { CityList as styles } from './styles';
 
 const data = new CityCollection([

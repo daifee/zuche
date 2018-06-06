@@ -12,11 +12,11 @@ export default class BaseCollection {
     this.Model = Model;
     this.list = docArray.map(doc => new this.Model(doc));
   }
-
+  // iterator接口
   [Symbol.iterator](): BaseCollection {
     return this;
   }
-
+  // iterator接口
   next() {
     const model = this.list[this.position];
     const result = model ? { done: false, value: model } : { done: true };
