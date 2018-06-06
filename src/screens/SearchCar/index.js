@@ -6,10 +6,11 @@
  * * CarList
  */
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { HeaderSchedule as Header } from '../../components/Header';
 import HotOptionList from './HotOptionList';
 import SideMenu from './SideMenu';
+import CarList from './CarList';
 import { SearchCar as styles } from './styles';
 
 export default class SearchCar extends React.Component {
@@ -32,7 +33,7 @@ export default class SearchCar extends React.Component {
             <SideMenu />
           </View>
           <View style={styles.carListWrapper}>
-            <Text>CarList</Text>
+            <CarList />
           </View>
         </View>
       </View>

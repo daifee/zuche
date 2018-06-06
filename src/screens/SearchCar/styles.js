@@ -22,5 +22,6 @@ export const SearchCar = StyleSheet.create({
   },
   carListWrapper: {
     // flex: 1,
+    flexGrow: 1,
   }
 });
