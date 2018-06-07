@@ -4,6 +4,10 @@ zuzuche.com 客户端（React Native）
 
 ---
 
+## components
+
+共用的 UI 组件
+
 ## models
 
 数据模型
