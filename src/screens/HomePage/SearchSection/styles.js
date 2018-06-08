@@ -64,7 +64,7 @@ export const City = StyleSheet.create({
   placeholderText: itemValuePlaceholder
 });
 
-export const Site = StyleSheet.create({
+export const Landmark = StyleSheet.create({
   container: {
     flex: 1,
     marginLeft: PADDING.md

@@ -2,10 +2,10 @@ import React from 'react';
 import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import ItemBox from './ItemBox';
-import SiteModel from '../../../models/Site.Model';
-import { Site as styles } from './styles';
+import LandmarkModel from '../../../models/Landmark.Model';
+import { Landmark as styles } from './styles';
 
-export default function Site(props) {
+export default function Landmark(props) {
   const { title, site } = props;
   const empty = !site;
   const textStyle = [styles.text];
@@ -21,7 +21,7 @@ export default function Site(props) {
 }
 
 
-Site.propTypes = {
+Landmark.propTypes = {
   title: PropTypes.string.isRequired,
-  site: PropTypes.instanceOf(SiteModel)
+  site: PropTypes.instanceOf(LandmarkModel)
 };

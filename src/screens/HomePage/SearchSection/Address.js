@@ -1,10 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import SiteModel from '../../../models/Site.Model';
+import LandmarkModel from '../../../models/Landmark.Model';
 import CityModel from '../../../models/City.Model';
 import City from './City';
-import Site from './Site';
+import Landmark from './Landmark';
 import DropoffSwitch from './DropoffSwitch';
 
 import { Address as styles } from './styles';
@@ -30,7 +30,7 @@ export default function Address(props) {
   return (
     <View style={styles.container}>
       <City city={city} title={config.cityTitle} />
-      <Site site={site} title={config.siteTitle} />
+      <Landmark site={site} title={config.siteTitle} />
       {
         typeof switchValue !== 'undefined'
         ? <DropoffSwitch value={switchValue} />
@@ -43,7 +43,7 @@ export default function Address(props) {
 Address.propTypes = {
   type: PropTypes.oneOf(['pickup', 'dropoff']).isRequired,
   city: PropTypes.instanceOf(CityModel),
-  site: PropTypes.instanceOf(SiteModel),
+  site: PropTypes.instanceOf(LandmarkModel),
   switchValue: PropTypes.bool
 };
 
