@@ -13,6 +13,7 @@ import SelectSite from './screens/SelectSite';
 import SearchCar from './screens/SearchCar';
 import SearchCity from './screens/SearchCity';
 import SearchSite from './screens/SearchSite';
+import Car from './screens/Car';
 import { COLOR } from './styles';
 
 const tabBarIconMap = {
@@ -73,9 +74,12 @@ const Stack = StackNavigator({
   },
   SearchCar: {
     screen: SearchCar,
+  },
+  Car: {
+    screen: Car
   }
 }, {
-  initialRouteName: 'SearchCar',
+  initialRouteName: 'Car',
   headerMode: 'screen',
 });
 

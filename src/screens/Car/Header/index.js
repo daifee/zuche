@@ -17,28 +17,3 @@
  * * 注意事项
  * * 当地交规
  */
-
-
-import React from 'react';
-import { View, Text } from 'react-native';
-import { HeaderSchedule as Header } from '../../components/Header';
-
-class Car extends React.Component {
-  static navigationOptions = {
-    header: Header
-  };
-
-  componentDidMount() {
-    // TODO
-  }
-
-  render() {
-    return (
-      <View>
-        <Text>{this.displayName}</Text>
-      </View>
-    );
-  }
-}
-
-export default Car;
