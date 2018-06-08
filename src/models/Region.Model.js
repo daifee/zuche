@@ -3,10 +3,10 @@
  */
 import BaseModel from './Base.Model';
 
-export type ID = string;
+export type REGION_ID = string;
 
 export default class RegionModel extends BaseModel {
-  id: string;
+  id: REGION_ID;
   cnName: string;
   enName: ?string;
   lat: ?number;
