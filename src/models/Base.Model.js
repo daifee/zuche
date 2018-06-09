@@ -1,5 +1,5 @@
 /**
- * 基类
+ * BaseModel
  */
 import BaseCollection from './Base.Collection';
 import { type DOC } from './flow.type';

@@ -1,5 +1,5 @@
 /**
- * Region 地区
+ * RegionModel 国家/地区
  */
 import BaseModel from './Base.Model';
 
