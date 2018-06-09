@@ -4,6 +4,14 @@ zuzuche.com 客户端（React Native）
 
 ---
 
+## APIs
+
+* 登录
+* 获取所有城市（关联：地标、国家/地区、大洲）
+* 根据取/还车城市&日期创建`cid`
+* 根据`cid`查询车
+* 获取车详情
+
 ## components
 
 共用的 UI 组件
