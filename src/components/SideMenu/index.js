@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { SideMenu as styles } from './styles';
+import { viewStyle } from '../../propTypes';
 
 import SideMenuItem from './SideMenuItem';
 
-const ViewPropTypesStyle = View.propTypes.style;
 
 export default function SideMenu(props) {
   const { style, children, ...rest } = props;
@@ -20,9 +20,9 @@ export default function SideMenu(props) {
 
 SideMenu.propTypes = {
   children: PropTypes.node.isRequired,
-  style: ViewPropTypesStyle,
-  topDividerStyle: ViewPropTypesStyle,
-  bottomDividerStyle: ViewPropTypesStyle
+  style: viewStyle,
+  topDividerStyle: viewStyle,
+  bottomDividerStyle: viewStyle
 };
 
 export { SideMenuItem };

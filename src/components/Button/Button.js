@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { TouchableHighlight, View } from 'react-native';
 import { Button as styles } from './styles';
 import { TextPrune } from '../Text';
+import { viewStyle, textStyle } from '../../propTypes';
 
-const ViewPropTypesStyle = View.propTypes.style;
-const TextPropTypesStyle = TextPrune.propTypes.style;
 
 export default function Button(props) {
   const {
@@ -24,7 +23,7 @@ export default function Button(props) {
 Button.propTypes = {
   ...TouchableHighlight.propTypes,
   children: PropTypes.node.isRequired,
-  contentContainerStyle: ViewPropTypesStyle,
-  textStyle: TextPropTypesStyle
+  contentContainerStyle: viewStyle,
+  textStyle: textStyle
 };
 

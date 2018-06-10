@@ -4,8 +4,8 @@ import { View, TouchableHighlight } from 'react-native';
 import { SideMenuItem as styles } from './styles';
 import { TextPrune } from '../Text';
 import { ITEM_BG_COLOR } from '../../styles';
+import { textStyle } from '../../propTypes';
 
-const TextPropTypesStyle = TextPrune.propTypes.style;
 
 export default function SideMenuItem(props) {
   const {
@@ -53,5 +53,5 @@ SideMenuItem.propTypes = {
   underlayColor: PropTypes.string,
   children: PropTypes.node,
   selected: PropTypes.bool,
-  textStyle: TextPropTypesStyle
+  textStyle: textStyle
 };

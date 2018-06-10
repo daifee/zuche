@@ -7,8 +7,8 @@ import ItemFooter from './ItemFooter';
 import { Item as styles } from './styles';
 import { ITEM_BG_COLOR_ACTIVE } from '../../styles';
 import RightArrow from './RightArrow';
+import { viewStyle } from '../../propTypes';
 
-const ViewPropTypesStyle = View.propTypes.style;
 
 export default function Item(props) {
   const {
@@ -54,13 +54,13 @@ export default function Item(props) {
 }
 
 Item.propTypes = {
-  style: ViewPropTypesStyle,
-  dividerStyle: ViewPropTypesStyle,
+  style: viewStyle,
+  dividerStyle: viewStyle,
   header: PropTypes.node,
-  headerContainerStyle: ViewPropTypesStyle,
+  headerContainerStyle: viewStyle,
   body: PropTypes.node,
-  bodyContainerStyle: ViewPropTypesStyle,
+  bodyContainerStyle: viewStyle,
   footer: PropTypes.node,
-  footerContainerStyle: ViewPropTypesStyle,
+  footerContainerStyle: viewStyle,
   rightArrow: PropTypes.bool
 };

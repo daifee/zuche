@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { ItemHeader as styles } from './styles';
 import { TextPrune } from '../Text';
+import { viewStyle } from '../../propTypes';
 
-const ViewPropTypesStyle = View.propTypes.style;
 
 export default function ItemHeader(props) {
   const { style, children, ...rest } = props;
@@ -17,6 +17,6 @@ export default function ItemHeader(props) {
 }
 
 ItemHeader.propTypes = {
-  style: ViewPropTypesStyle,
+  style: viewStyle,
   children: PropTypes.node
 };

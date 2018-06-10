@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import { CheckBox as styles } from './styles';
 import { COLOR, FONT_SIZE, TEXT_COLOR_SECONDARY } from '../../styles';
-
-const TextPropTypesStyle = Text.propTypes.style;
+import { textStyle } from '../../propTypes';
 
 export default function CheckBox(props) {
   const {
@@ -43,5 +42,5 @@ CheckBox.propTypes = {
   checked: PropTypes.bool,
   size: PropTypes.number,
   disable: PropTypes.bool,
-  iconStyle: TextPropTypesStyle
+  iconStyle: textStyle
 };

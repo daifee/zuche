@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { Header as styles } from './styles';
+import { viewStyle } from '../../propTypes';
 
-const ViewPropTypesStyle = View.propTypes.style;
 
 export default function Header(props) {
   const {
@@ -32,11 +32,11 @@ export default function Header(props) {
 }
 
 Header.propTypes = {
-  style: ViewPropTypesStyle,
+  style: viewStyle,
   left: PropTypes.node,
-  leftContainerStyle: ViewPropTypesStyle,
+  leftContainerStyle: viewStyle,
   right: PropTypes.node,
-  rightContainerStyle: ViewPropTypesStyle,
+  rightContainerStyle: viewStyle,
   center: PropTypes.node,
-  centerContainerStyle: ViewPropTypesStyle
+  centerContainerStyle: viewStyle
 };

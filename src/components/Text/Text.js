@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 import { TextComponent as styles } from './styles';
+import { textStyle } from '../../propTypes';
 
-const TextPropTypesStyle = Text.propTypes.style;
 
 export default function TextComponent(props) {
   const {
@@ -22,5 +22,5 @@ TextComponent.defaultProps = {
 TextComponent.propTypes = {
   children: PropTypes.node,
   level: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'p']),
-  style: TextPropTypesStyle
+  style: textStyle
 };

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { List as styles } from './styles';
+import { viewStyle } from '../../propTypes';
 
-const ViewPropTypesStyle = View.propTypes.style;
 
 export default function List(props) {
   const { style, children, ...rest } = props;
@@ -18,7 +18,7 @@ export default function List(props) {
 
 List.propTypes = {
   children: PropTypes.node.isRequired,
-  style: ViewPropTypesStyle,
-  topDividerStyle: ViewPropTypesStyle,
-  bottomDividerStyle: ViewPropTypesStyle
+  style: viewStyle,
+  topDividerStyle: viewStyle,
+  bottomDividerStyle: viewStyle
 };

@@ -1,13 +1,12 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { CheckButton as styles } from './styles';
 import { TextPrune } from '../Text';
 import CheckBox from '../CheckBox';
 import { FONT_SIZE } from '../../styles';
+import { viewStyle, textStyle } from '../../propTypes';
 
-const ViewPropTypesStyle = View.propTypes.style;
-const TextPrunePropTypesStyle = TextPrune.propTypes.style;
 
 export default function CheckButton(props) {
   const {
@@ -45,7 +44,7 @@ CheckButton.propTypes = {
   onPress: PropTypes.func,
   checked: PropTypes.bool,
   children: PropTypes.node,
-  style: ViewPropTypesStyle,
-  textStyle: TextPrunePropTypesStyle,
+  style: viewStyle,
+  textStyle: textStyle,
   disable: PropTypes.bool
 };

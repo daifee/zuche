@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Text from '../Text';
+import { textStyle } from '../../propTypes';
 
-const TextPropTypesStyle = Text.propTypes.style;
 
 export default function Title(props) {
   const { content, ...rest } = props;
@@ -11,5 +11,5 @@ export default function Title(props) {
 
 Title.propTypes = {
   content: PropTypes.string,
-  style: TextPropTypesStyle
+  style: textStyle
 };

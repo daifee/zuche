@@ -3,8 +3,8 @@ import { View, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
 import { TextPrune } from '../Text';
 import { FormInput as styles } from './styles';
+import { viewStyle } from '../../propTypes';
 
-const ViewPropTypesStyle = View.propTypes.style;
 
 export default function FormInput(props) {
   const {
@@ -32,7 +32,7 @@ FormInput.defaultProps = {
 FormInput.propTypes = {
   ...View.propTypes,
   label: PropTypes.node,
-  labelContainerStyle: ViewPropTypesStyle,
+  labelContainerStyle: viewStyle,
   textInput: PropTypes.shape({
     ...TextInput.propTypes
   })

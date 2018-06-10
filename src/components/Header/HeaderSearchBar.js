@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, Text, View } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 import SearchBar from '../SearchBar';
 import { HeaderSearchBar as styles } from './styles';
 import Header from './Header';
+import { viewStyle, textStyle } from '../../propTypes';
 
-const ViewPropTypesStyle = View.propTypes.style;
-const TextPropTypesStyle = Text.propTypes.style;
 
 export default function HeaderSearchBar(props) {
   const enchanceProps = { ...HeaderSearchBar.defaultProps, ...props };
@@ -56,8 +55,8 @@ HeaderSearchBar.propTypes = {
     ...SearchBar.propTypes
   }),
   buttonProps: {
-    contrainerStyle: ViewPropTypesStyle,
-    textStyle: TextPropTypesStyle,
+    contrainerStyle: viewStyle,
+    textStyle: textStyle,
     content: PropTypes.string
   }
 };
