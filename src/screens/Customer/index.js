@@ -1,16 +1,20 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import { Customer as styles } from './styles';
-import { HeaderSearchBar as Header } from '../../components/Header';
 import Button, { ButtonPrimary } from '../../components/Button';
 import List from '../../components/List';
 import CheckBox from '../../components/CheckBox';
 import CheckButton from '../../components/CheckButton';
 import SideMenu, { SideMenuItem } from '../../components/SideMenu';
 
+
 class Customer extends React.Component {
   static navigationOptions = {
-    header: Header
+    title: '客服',
+    tabBarIcon: ({ tintColor }) => {
+      return <SimpleLineIcons name="earphones-alt" size={22} color={tintColor} />;
+    }
   };
 
   componentDidMount() {

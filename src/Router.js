@@ -1,10 +1,7 @@
-import React from 'react';
 import {
-  TabBarBottom,
   createStackNavigator,
   createBottomTabNavigator
 } from 'react-navigation';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import HomePage from './screens/HomePage';
 import Customer from './screens/Customer';
 import UserProfile from './screens/UserProfile';
@@ -17,11 +14,6 @@ import Car from './screens/Car';
 import Login from './screens/Login';
 import { COLOR } from './styles';
 
-const tabBarIconMap = {
-  HomePage: 'home',
-  Customer: 'earphones-alt',
-  UserProfile: 'user'
-};
 
 const Root = createBottomTabNavigator({
   HomePage: {
@@ -34,26 +26,11 @@ const Root = createBottomTabNavigator({
     screen: UserProfile,
   },
 }, {
-  navigationOptions: ({ navigation }) => ({
-    // eslint-disable-next-line
-    tabBarIcon: ({ focused, tintColor }) => {
-      const { routeName } = navigation.state;
-      const iconName = tabBarIconMap[routeName] || 'settings';
-
-      // You can return any component that you like here! We usually use an
-      // icon component from react-native-vector-icons
-      return <SimpleLineIcons name={iconName} size={25} color={tintColor} />;
-    },
-  }),
   initialRouteName: 'HomePage',
   tabBarOptions: {
     activeTintColor: COLOR.primary,
-    inactiveTintColor: COLOR.normal,
-  },
-  tabBarComponent: TabBarBottom,
-  tabBarPosition: 'bottom',
-  animationEnabled: false,
-  swipeEnabled: false,
+    inactiveTintColor: COLOR.normal
+  }
 });
 
 
@@ -83,7 +60,10 @@ const Stack = createStackNavigator({
     screen: Login
   }
 }, {
-  initialRouteName: 'Login',
+  navigationOptions: {
+    header: null
+  },
+  initialRouteName: 'Root',
   headerMode: 'screen'
 });
 
