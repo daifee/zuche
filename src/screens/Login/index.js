@@ -5,6 +5,11 @@ import { FormInput } from '../../components/Form';
 import { Login as styles } from './styles';
 
 class Login extends React.Component {
+  static navigationOptions = {
+    mode: 'modal',
+    header: null
+  };
+
   componentDidMount() {
     // TODO
   }

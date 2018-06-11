@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  StackNavigator,
-  TabNavigator,
   TabBarBottom,
+  createStackNavigator,
+  createBottomTabNavigator
 } from 'react-navigation';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import HomePage from './screens/HomePage';
@@ -23,7 +23,7 @@ const tabBarIconMap = {
   UserProfile: 'user'
 };
 
-const Root = TabNavigator({
+const Root = createBottomTabNavigator({
   HomePage: {
     screen: HomePage,
   },
@@ -57,7 +57,7 @@ const Root = TabNavigator({
 });
 
 
-const Stack = StackNavigator({
+const Stack = createStackNavigator({
   Root: {
     screen: Root,
   },
@@ -84,7 +84,7 @@ const Stack = StackNavigator({
   }
 }, {
   initialRouteName: 'Login',
-  headerMode: 'screen',
+  headerMode: 'screen'
 });
 
 export default Stack;
