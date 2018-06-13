@@ -2,11 +2,10 @@
  * @flow
  * 日志模块
  */
-import { reactotron } from '../config';
 import { type LEVEL } from './log.type';
 
 
-const console = reactotron;
+const { console } = global;
 
 
 export function log(message: string, level: LEVEL = 'info') {
