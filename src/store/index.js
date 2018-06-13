@@ -16,7 +16,7 @@ import { storeName, createModels, createDispatch, createGetState } from './scope
 import * as models from './models';
 import { models as homepageModels } from '../screens/HomePage/store';
 
-import Reactotron from '../ReactotronConfig';
+import { reactotron } from '../config';
 
 const SCOPE = 'GLOBAL';
 const globalModels = createModels(models, SCOPE);
@@ -28,7 +28,7 @@ const store = init({
     ...homepageModels
   },
   redux: {
-    createStore: Reactotron.createStore
+    createStore: reactotron.createStore
   }
 });
 

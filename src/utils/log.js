@@ -2,12 +2,11 @@
  * @flow
  * 日志模块
  */
-// eslint-disable-next-line
-import Reactotron from 'reactotron-react-native';
+import { reactotron } from '../config';
 import { type LEVEL } from './log.type';
 
-// eslint-disable-next-line
-const console = Reactotron;
+
+const console = reactotron;
 
 
 export function log(message: string, level: LEVEL = 'info') {
