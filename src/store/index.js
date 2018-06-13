@@ -12,7 +12,7 @@
  * * 像多store那样解决了命名冲突，使用却与单store一样简单。
  */
 import { init } from '@rematch/core';
-import { createModels, createDispatch, createGetState } from './scope';
+import { storeName, createModels, createDispatch, createGetState } from './scope';
 import * as models from './models';
 import { models as homepageModels } from '../screens/HomePage/store';
 
@@ -22,6 +22,7 @@ const SCOPE = 'GLOBAL';
 const globalModels = createModels(models, SCOPE);
 
 const store = init({
+  name: storeName,
   models: {
     ...globalModels,
     ...homepageModels

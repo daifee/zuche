@@ -5,8 +5,7 @@ import Schedule from './Schedule';
 import SearchButton from './SearchButton';
 import { SearchSection as styles } from './styles';
 
-
-export default function SearchSection() {
+function SearchSection() {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -24,3 +23,5 @@ export default function SearchSection() {
   );
 }
 
+
+export default SearchSection;

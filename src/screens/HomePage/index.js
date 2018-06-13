@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import React from 'react';
 import { View } from 'react-native';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
@@ -24,11 +23,5 @@ class HomePage extends React.Component {
   }
 }
 
-const HomePageConnector = connect((state, props) => {
-  console.log(state, props);
-  return { ...state, props };
-}, undefined, undefined, {
-  storeKey: 'store'
-})(HomePage);
 
-export default HomePageConnector;
+export default HomePage;

@@ -10,6 +10,7 @@ function extractModelName(modelName: string, scope: string): string | void {
   return snippets[0] === scope ? snippets[1] : undefined;
 }
 
+export const storeName = '@scope';
 
 export function createModels(models: {}, scope: string): {} {
   const scopeModels = {};
@@ -34,7 +35,7 @@ export function createDispatch(scope: string): (action: ACTION) => any {
 
 export function createGetState(scope: string): Function {
   return function scopeGetState() {
-    const state = getState();
+    const state = getState()[storeName] || {};
     const scopeState = {};
     Object.keys(state).forEach((key) => {
       const modelName = extractModelName(key, scope);

@@ -7,4 +7,3 @@ const SCOPE = 'HOMEPAGE';
 export const models = createModels(originModels, SCOPE);
 export const dispatch = createDispatch(SCOPE);
 export const getState = createGetState(SCOPE);
-

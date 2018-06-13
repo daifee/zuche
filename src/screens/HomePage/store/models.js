@@ -1,6 +1,6 @@
 
 export const count = {
-  state: 0,
+  state: 2,
   reducers: {
     add(state) {
       return state + 1;
