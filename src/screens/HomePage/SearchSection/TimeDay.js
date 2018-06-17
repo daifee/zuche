@@ -4,12 +4,17 @@ import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import ItemBox from './ItemBox';
 import { TimeDay as styles } from './styles';
+import * as DatePicker from '../../../components/DatePicker';
 
 export default function TimeDay(props) {
   const { date, title } = props;
 
   return (
-    <ItemBox title={title} style={styles.container}>
+    <ItemBox
+      title={title}
+      style={styles.container}
+      onPress={DatePicker.show}
+    >
       <Text style={styles.text}>12月{date.getDay()}日</Text>
     </ItemBox>
   );

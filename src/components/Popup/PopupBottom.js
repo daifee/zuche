@@ -12,7 +12,7 @@ const OPACITY = 0.3;
 
 function PopupBottom(props) {
   const {
-    content, translateY, height, opacity, onClose
+    content, translateY, opacity, onClose, onLayout
   } = props;
   return (
     <PopupMask
@@ -22,9 +22,9 @@ function PopupBottom(props) {
       <Animated.View
         style={[
           styles.container,
-          { height: height },
           { transform: [{ translateY: translateY }] }
         ]}
+        onLayout={onLayout}
       >
         {content}
       </Animated.View>
@@ -39,7 +39,6 @@ PopupBottom.propTypes = {
   // AnimatedInterpolation
   // eslint-disable-next-line
   translateY: PropTypes.any.isRequired,
-  height: PropTypes.number.isRequired,
   content: PropTypes.node,
   onClose: PropTypes.func
 };
@@ -47,7 +46,7 @@ PopupBottom.propTypes = {
 
 class PopupBottomContainer extends React.Component {
   static propTypes = {
-    height: PopupBottom.propTypes.height,
+    height: PropTypes.number,
     content: PopupBottom.propTypes.content,
   };
 
@@ -66,12 +65,20 @@ class PopupBottomContainer extends React.Component {
     };
   }
 
+  onLayout = ({ nativeEvent }) => {
+    const { layout } = nativeEvent;
+
+    if (this.state.height === 0) {
+      this.setState({ height: layout.height });
+    }
+  };
+
   show(options: SHOW_OPTIONS = {}) {
     const {
-      height, duration, content, callback
+      duration, content, callback
     } = options;
 
-    this.setState({ height, content, visible: true }, () => {
+    this.setState({ height: 0, content, visible: true }, () => {
       Animated.timing(this.state.animation, {
         toValue: 1,
         duration: duration || DURATION
@@ -101,9 +108,11 @@ class PopupBottomContainer extends React.Component {
 
     if (!visible) return null;
 
+    const opacityMax = height === 0 ? 0 : OPACITY;
+
     const opacity = animation.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, OPACITY]
+      outputRange: [0, opacityMax]
     });
     const translateY = animation.interpolate({
       inputRange: [0, 1],
@@ -113,12 +122,12 @@ class PopupBottomContainer extends React.Component {
     return (
       <PopupBottom
         opacity={opacity}
-        height={height}
         translateY={translateY}
         content={content}
         onClose={() => {
           this.hide();
         }}
+        onLayout={this.onLayout}
       />
     );
   }
