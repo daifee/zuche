@@ -12,7 +12,7 @@ const OPACITY = 0.3;
 
 function PopupBottom(props) {
   const {
-    content, translateY, opacity, onClose, onLayout
+    children, translateY, opacity, onClose, onChildrenWrapperLayout
   } = props;
   return (
     <PopupMask
@@ -24,9 +24,9 @@ function PopupBottom(props) {
           styles.container,
           { transform: [{ translateY: translateY }] }
         ]}
-        onLayout={onLayout}
+        onLayout={onChildrenWrapperLayout}
       >
-        {content}
+        {children}
       </Animated.View>
     </PopupMask>
   );
@@ -35,19 +35,20 @@ function PopupBottom(props) {
 PopupBottom.propTypes = {
   // AnimatedInterpolation
   // eslint-disable-next-line
-  opacity: PropTypes.any.isRequired,
+  opacity: PropTypes.object.isRequired,
   // AnimatedInterpolation
   // eslint-disable-next-line
-  translateY: PropTypes.any.isRequired,
-  content: PropTypes.node,
-  onClose: PropTypes.func
+  translateY: PropTypes.object.isRequired,
+  children: PropTypes.node,
+  onClose: PropTypes.func,
+  onChildrenWrapperLayout: PropTypes.func
 };
 
 
-class PopupBottomContainer extends React.Component {
+export class PopupBottomContainer extends React.Component {
   static propTypes = {
     height: PropTypes.number,
-    content: PopupBottom.propTypes.content,
+    children: PopupBottom.propTypes.children,
   };
 
   static defaultProps = {
@@ -61,11 +62,11 @@ class PopupBottomContainer extends React.Component {
       animation: new Animated.Value(0),
       visible: false,
       height: props.height,
-      content: props.content
+      children: props.children
     };
   }
 
-  onLayout = ({ nativeEvent }) => {
+  onChildrenWrapperLayout = ({ nativeEvent }) => {
     const { layout } = nativeEvent;
 
     if (this.state.height === 0) {
@@ -78,7 +79,7 @@ class PopupBottomContainer extends React.Component {
       duration, content, callback
     } = options;
 
-    this.setState({ height: 0, content, visible: true }, () => {
+    this.setState({ height: 0, children: content, visible: true }, () => {
       Animated.timing(this.state.animation, {
         toValue: 1,
         duration: duration || DURATION
@@ -103,7 +104,7 @@ class PopupBottomContainer extends React.Component {
 
   render() {
     const {
-      visible, animation, height, content
+      visible, animation, height, children
     } = this.state;
 
     if (!visible) return null;
@@ -123,38 +124,39 @@ class PopupBottomContainer extends React.Component {
       <PopupBottom
         opacity={opacity}
         translateY={translateY}
-        content={content}
         onClose={() => {
           this.hide();
         }}
-        onLayout={this.onLayout}
-      />
+        onChildrenWrapperLayout={this.onChildrenWrapperLayout}
+      >
+        {children}
+      </PopupBottom>
     );
   }
 }
 
 
-let instance = null;
+let singleInstance = null;
 
 export function register(props) {
   return (
     <PopupBottomContainer
       {...props}
-      ref={(el) => { instance = el; }}
+      ref={(el) => { singleInstance = el; }}
     />
   );
 }
 
 
-export function hide(options) {
-  if (instance) {
-    instance.hide(options);
+export function hide(options: HIDE_OPTIONS) {
+  if (singleInstance) {
+    singleInstance.hide(options);
   }
 }
 
-export function show(options) {
-  if (instance) {
-    instance.show(options);
+export function show(options: SHOW_OPTIONS) {
+  if (singleInstance) {
+    singleInstance.show(options);
   }
 }
 

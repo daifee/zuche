@@ -1,7 +1,6 @@
 
 
 export type SHOW_OPTIONS = {
-  height: number,
   duration?: number,
   content: any,
   callback?: () => {}
