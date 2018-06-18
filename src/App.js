@@ -7,6 +7,11 @@ import store from './store';
 
 // import { PopupBottom } from './components/Popup';
 // import { AnimatedPopupBottomContainer } from './components/AnimatedPopup';
+import { DatePicker } from './components/AnimatedDatePicker';
+
+// class Demo2 extends React.Component {
+
+// }
 
 // class Demo extends React.Component {
 //   state = {
@@ -49,6 +54,7 @@ function App() {
     <Provider store={store}>
       <React.Fragment>
         <AppNavigation />
+        <DatePicker date={new Date()} onDateChange={() => {}} />
       </React.Fragment>
     </Provider>
   );
