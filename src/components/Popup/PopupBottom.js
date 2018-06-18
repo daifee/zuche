@@ -78,9 +78,12 @@ export class PopupBottomContainer extends React.Component {
     const {
       duration, content, callback
     } = options;
+    const { animation, visible } = this.state;
+
+    if (visible) return;
 
     this.setState({ height: 0, children: content, visible: true }, () => {
-      Animated.timing(this.state.animation, {
+      Animated.timing(animation, {
         toValue: 1,
         duration: duration || DURATION
       }).start(() => {
@@ -93,8 +96,11 @@ export class PopupBottomContainer extends React.Component {
 
   hide(options: HIDE_OPTIONS = {}) {
     const { callback, duration } = options;
+    const { animation, visible } = this.state;
 
-    Animated.timing(this.state.animation, {
+    if (!visible) return;
+
+    Animated.timing(animation, {
       toValue: 0,
       duration: duration || DURATION
     }).start(() => {
