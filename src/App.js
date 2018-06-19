@@ -7,54 +7,47 @@ import store from './store';
 
 // import { PopupBottom } from './components/Popup';
 // import { AnimatedPopupBottomContainer } from './components/AnimatedPopup';
-import { DatePicker } from './components/AnimatedDatePicker';
+import { AnimatedDatePickerContainer } from './components/AnimatedDatePicker';
 
-// class Demo2 extends React.Component {
 
-// }
+class Demo extends React.Component {
+  state = {
+    visible: true,
+    date: new Date()
+  };
 
-// class Demo extends React.Component {
-//   state = {
-//     visible: true
-//   };
+  show() {
+    this.setState({ visible: true });
+  }
 
-//   show() {
-//     this.setState({ visible: true });
-//   }
+  hide() {
+    this.setState({ visible: false });
+  }
 
-//   hide() {
-//     this.setState({ visible: false });
-//   }
+  render() {
+    const { visible, date } = this.state;
 
-//   render() {
-//     const { visible } = this.state;
-
-//     return (
-//       <AnimatedPopupBottomContainer visible={visible}>
-//         <View>
-//           <Text>wrere{Date.now()}</Text>
-//           <Text>wrere</Text>
-//           <Text>wrere</Text>
-//           <Text>wrere</Text>
-//           <Text>wrere</Text>
-//           <Text>wrere</Text>
-//           <Text>wrere</Text>
-//           <Text>wrere</Text>
-//           <Text>wrere</Text>
-//           <Text>wrere</Text>
-//           <Text>wrere</Text>
-//         </View>
-//       </AnimatedPopupBottomContainer>
-//     );
-//   }
-// }
+    return (
+      <AnimatedDatePickerContainer
+        date={date}
+        visible={visible}
+        onCancel={() => {
+          console.log('cancel');
+        }}
+        onConfirm={(date) => {
+          this.setState({ date: date, visible: false });
+        }}
+      />
+    );
+  }
+}
 
 function App() {
   return (
     <Provider store={store}>
       <React.Fragment>
         <AppNavigation />
-        <DatePicker date={new Date()} onDateChange={() => {}} />
+        <Demo />
       </React.Fragment>
     </Provider>
   );
