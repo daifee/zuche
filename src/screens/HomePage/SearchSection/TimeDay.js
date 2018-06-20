@@ -4,16 +4,15 @@ import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import ItemBox from './ItemBox';
 import { TimeDay as styles } from './styles';
-import * as DatePicker from '../../../components/DatePicker';
 
 export default function TimeDay(props) {
-  const { date, title } = props;
+  const { date, title, ...rest } = props;
 
   return (
     <ItemBox
+      {...rest}
       title={title}
       style={styles.container}
-      onPress={DatePicker.show}
     >
       <Text style={styles.text}>12月{date.getDay()}日</Text>
     </ItemBox>
@@ -21,6 +20,10 @@ export default function TimeDay(props) {
 }
 
 TimeDay.propTypes = {
+  ...ItemBox.propTypes,
+  // eslint-disable-next-line
+  children: PropTypes.any,
+
   title: PropTypes.string.isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
+  date: PropTypes.instanceOf(Date).isRequired
 };

@@ -6,6 +6,8 @@ import { Time as styles } from './styles';
 import TimeDay from './TimeDay';
 import TimeHours from './TimeHours';
 
+import { AnimatedDatePickerApi } from '../../../components/AnimatedDatePicker';
+
 const configMap = {
   pickup: {
     title: '取车时间',
@@ -21,7 +23,20 @@ export default function Time(props) {
 
   return (
     <View style={styles.container}>
-      <TimeDay date={date} title={config.title} />
+      <TimeDay
+        date={date}
+        title={config.title}
+        onPress={() => {
+          AnimatedDatePickerApi.show({
+            onCancel() {
+              AnimatedDatePickerApi.hide();
+            },
+            onConfirm(date) {
+              console.log(date);
+            }
+          });
+        }}
+      />
       <TimeHours date={date} />
     </View>
   );
