@@ -5,7 +5,6 @@ import AnimatedDatePickerContainer from './AnimatedDatePickerContainer';
 let singleInstance = null;
 
 function createInstance(instance) {
-  console.log('--------');
   singleInstance = instance;
 }
 
