@@ -28,9 +28,9 @@ export default function Time(props) {
         title={config.title}
         onPress={() => {
           AnimatedDatePickerApi.show({
-            onCancel() {
-              AnimatedDatePickerApi.hide();
-            },
+            // onCancel() {
+            //   AnimatedDatePickerApi.hide();
+            // },
             onConfirm(date) {
               console.log(date);
             }

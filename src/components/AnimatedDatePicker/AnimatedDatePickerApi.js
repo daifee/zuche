@@ -9,10 +9,17 @@ function createInstance(instance) {
 }
 
 class AnimatedDatePickerApi extends React.Component {
-  state = {
-    date: new Date(),
-    visible: false
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      date: new Date(),
+      visible: false,
+      onCancel: () => {
+        this.hide();
+      }
+    };
+  }
 
   componentWillUnmount() {
     singleInstance = null;
