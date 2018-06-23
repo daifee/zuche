@@ -10,9 +10,21 @@ export default function Schedule(props) {
 
   return (
     <View style={styles.container}>
-      <Time type="pickup" date={pickupDate} />
+      <Time
+        title="取车时间"
+        date={pickupDate}
+        onPress={() => {
+          console.warn('TODO');
+        }}
+      />
       <TimeAmount days={7} />
-      <Time type="dropoff" date={dropoffDate} />
+      <Time
+        title="还车时间"
+        date={dropoffDate}
+        onPress={() => {
+          console.warn('TODO');
+        }}
+      />
     </View>
   );
 }

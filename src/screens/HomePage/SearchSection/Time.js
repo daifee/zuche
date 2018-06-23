@@ -6,43 +6,24 @@ import { Time as styles } from './styles';
 import TimeDay from './TimeDay';
 import TimeHours from './TimeHours';
 
-import { AnimatedDatePickerApi } from '../../../components/AnimatedDatePicker';
-
-const configMap = {
-  pickup: {
-    title: '取车时间',
-  },
-  dropoff: {
-    title: '还车时间',
-  },
-};
 
 export default function Time(props) {
-  const { type, date } = props;
-  const config = configMap[type];
+  const { title, date, onPress } = props;
 
   return (
     <View style={styles.container}>
       <TimeDay
         date={date}
-        title={config.title}
-        onPress={() => {
-          AnimatedDatePickerApi.show({
-            // onCancel() {
-            //   AnimatedDatePickerApi.hide();
-            // },
-            onConfirm(date) {
-              console.log(date);
-            }
-          });
-        }}
+        title={title}
+        onPress={onPress}
       />
-      <TimeHours date={date} />
+      <TimeHours date={date} onPress={onPress} />
     </View>
   );
 }
 
 Time.propTypes = {
-  type: PropTypes.oneOf(['pickup', 'dropoff']).isRequired,
+  title: PropTypes.string.isRequired,
   date: PropTypes.instanceOf(Date).isRequired,
+  onPress: PropTypes.func
 };
