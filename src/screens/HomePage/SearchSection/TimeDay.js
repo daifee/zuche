@@ -14,7 +14,7 @@ export default function TimeDay(props) {
       title={title}
       style={styles.container}
     >
-      <Text style={styles.text}>12月{date.getDay()}日</Text>
+      <Text style={styles.text}>{date.getMonth() + 1}月{date.getDate()}日</Text>
     </ItemBox>
   );
 }

@@ -19,6 +19,11 @@ class AnimatedDatePickerApi extends React.Component {
         this.hide();
       }
     };
+
+    this.refContainer = null;
+    this.createRefContainer = (instance) => {
+      this.refContainer = instance;
+    };
   }
 
   componentWillUnmount() {
@@ -26,6 +31,9 @@ class AnimatedDatePickerApi extends React.Component {
   }
 
   show(options) {
+    if (options.date && this.refContainer) {
+      this.refContainer.setDate(options.date);
+    }
     this.setState({ ...options, visible: true });
   }
 
@@ -34,7 +42,25 @@ class AnimatedDatePickerApi extends React.Component {
   }
 
   render() {
-    return (<AnimatedDatePickerContainer {...this.state} />);
+    const { onCancel, onConfirm, ...rest } = this.state;
+    return (
+      <AnimatedDatePickerContainer
+        {...rest}
+        ref={this.createRefContainer}
+        onCancel={() => {
+          if (onCancel) {
+            onCancel();
+          }
+          this.hide();
+        }}
+        onConfirm={(date) => {
+          if (onConfirm) {
+            onConfirm(date);
+          }
+          this.hide();
+        }}
+      />
+    );
   }
 }
 

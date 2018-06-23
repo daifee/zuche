@@ -26,7 +26,7 @@ export default class AnimatedDatePickerContainer extends React.Component {
   }
 
   onDateChange = (date) => {
-    this.setState({ date: date });
+    this.setDate(date);
   };
 
   onCancel = () => {
@@ -39,6 +39,10 @@ export default class AnimatedDatePickerContainer extends React.Component {
     if (this.props.onConfirm) {
       this.props.onConfirm(this.state.date);
     }
+  };
+
+  setDate = (date) => {
+    this.setState({ date: date });
   };
 
   render() {

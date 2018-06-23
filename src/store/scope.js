@@ -27,7 +27,7 @@ export function createDispatch(scope: string): (action: ACTION) => any {
   return function scopeDispatch(action: ACTION) {
     const newAction = {
       type: createScopeModelName(action.type, scope),
-      playload: action.playload
+      payload: action.payload
     };
     return dispatch(newAction);
   };
