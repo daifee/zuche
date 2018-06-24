@@ -55,5 +55,19 @@ export default class SearchParams extends BaseModel {
     const totalDays = timeOffset / 1000 / 60 / 60 / 24;
     return Math.ceil(totalDays);
   }
+
+
+  static monthDate(date: Date): string {
+    return `${date.getMonth() + 1}月${date.getDate()}日`;
+  }
+
+  static week(date: Date): string {
+    const mapDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+    return mapDays[date.getDay()];
+  }
+
+  static hoursMinutes(date: Date): string {
+    return `${date.getHours()}:${date.getMinutes()}`;
+  }
 }
 

@@ -11,12 +11,10 @@ import {
 } from '../../../store';
 
 import { AnimatedDatePickerApi } from '../../../components/AnimatedDatePicker';
+import SearchParamsModel from '../../../models/SearchParams.Model';
 
 function Schedule(props) {
-  const { pickupDate, dropoffDate } = props;
-
-  let totalDays = ((dropoffDate.getTime() - pickupDate.getTime()) / 1000 / 60 / 60 / 24) + 1;
-  totalDays = Math.ceil(totalDays);
+  const { pickupDate, dropoffDate, totalDays } = props.searchParams;
 
   return (
     <View style={styles.container}>
@@ -40,7 +38,15 @@ function Schedule(props) {
         title="还车时间"
         date={dropoffDate}
         onPress={() => {
-          console.warn('TODO');
+          AnimatedDatePickerApi.show({
+            date: dropoffDate,
+            onConfirm(date) {
+              globalDespatch({
+                type: 'searchParams/setDropoffDate',
+                payload: date
+              });
+            }
+          });
         }}
       />
     </View>
@@ -48,17 +54,12 @@ function Schedule(props) {
 }
 
 Schedule.propTypes = {
-  pickupDate: PropTypes.instanceOf(Date),
-  dropoffDate: PropTypes.instanceOf(Date),
+  searchParams: PropTypes.instanceOf(SearchParamsModel),
 };
 
 
-export default connect((realState, props) => {
+export default connect(() => {
   const state = globalGetState();
   const { searchParams } = state;
-  return {
-    ...props,
-    pickupDate: searchParams.pickupDate,
-    dropoffDate: searchParams.dropoffDate
-  };
+  return { searchParams };
 })(Schedule);

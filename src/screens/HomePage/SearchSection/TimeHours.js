@@ -4,16 +4,16 @@ import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import ItemBox from './ItemBox';
 import { TimeHours as styles } from './styles';
+import SearchParamsModel from '../../../models/SearchParams.Model';
 
-const mapDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
 
 export default function TimeHour(props) {
   const { date, onPress } = props;
 
   return (
-    <ItemBox title={mapDays[date.getDay()]} onPress={onPress}>
+    <ItemBox title={SearchParamsModel.week(date)} onPress={onPress}>
       <Text style={styles.text}>
-        {date.getHours()}:{date.getMinutes()}
+        {SearchParamsModel.hoursMinutes(date)}
       </Text>
     </ItemBox>
   );

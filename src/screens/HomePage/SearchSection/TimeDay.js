@@ -4,6 +4,8 @@ import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import ItemBox from './ItemBox';
 import { TimeDay as styles } from './styles';
+import SearchParamsModel from '../../../models/SearchParams.Model';
+
 
 export default function TimeDay(props) {
   const { date, title, ...rest } = props;
@@ -14,7 +16,7 @@ export default function TimeDay(props) {
       title={title}
       style={styles.container}
     >
-      <Text style={styles.text}>{date.getMonth() + 1}月{date.getDate()}日</Text>
+      <Text style={styles.text}>{SearchParamsModel.monthDate(date)}</Text>
     </ItemBox>
   );
 }
