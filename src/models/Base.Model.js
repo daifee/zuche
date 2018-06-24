@@ -6,6 +6,9 @@ import { type DOC } from './flow.type';
 
 export default class BaseModel {
   constructor(doc: DOC = {}) {
+    // 实现 getter, setter 属性的存放位置
+    this.doc = {};
+
     Object.keys(doc).forEach((key) => {
       this[key] = doc[key];
     });
@@ -32,5 +35,10 @@ export default class BaseModel {
   // 与toArray()逻辑相同
   toJSON(): DOC {
     return this.toObject();
+  }
+
+  clone(): BaseModel {
+    const doc = this.toObject();
+    return new this.constructor(doc);
   }
 }
