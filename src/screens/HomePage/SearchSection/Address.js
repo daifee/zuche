@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import { withNavigation } from 'react-navigation';
 import LandmarkModel from '../../../models/Landmark.Model';
 import CityModel from '../../../models/City.Model';
 import City from './City';
@@ -21,16 +22,32 @@ const configMap = {
 };
 
 
-export default function Address(props) {
+function Address(props) {
   const {
-    type, city, site, switchValue,
+    type, city, landmark, switchValue, navigation
   } = props;
   const config = configMap[type];
 
   return (
     <View style={styles.container}>
-      <City city={city} title={config.cityTitle} />
-      <Landmark site={site} title={config.siteTitle} />
+      <City
+        city={city}
+        title={config.cityTitle}
+        onPress={() => {
+          navigation.push('SelectCity', {
+            type: type
+          });
+        }}
+      />
+      <Landmark
+        landmark={landmark}
+        title={config.siteTitle}
+        onPress={() => {
+          navigation.push('SelectCity', {
+            type: type
+          });
+        }}
+      />
       {
         typeof switchValue !== 'undefined'
         ? <DropoffSwitch value={switchValue} />
@@ -43,7 +60,10 @@ export default function Address(props) {
 Address.propTypes = {
   type: PropTypes.oneOf(['pickup', 'dropoff']).isRequired,
   city: PropTypes.instanceOf(CityModel),
-  site: PropTypes.instanceOf(LandmarkModel),
-  switchValue: PropTypes.bool
+  landmark: PropTypes.instanceOf(LandmarkModel),
+  switchValue: PropTypes.bool,
+  navigation: PropTypes.instanceOf(Object)
 };
 
+
+export default withNavigation(Address);
