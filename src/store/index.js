@@ -15,6 +15,7 @@ import { init } from '@rematch/core';
 import { storeName, createModels, createDispatch, createGetState } from './scope';
 import * as models from './models';
 import { models as homepageModels } from '../screens/HomePage/store';
+import { models as selectCityModels } from '../screens/SelectCity/store';
 
 
 const SCOPE = 'GLOBAL';
@@ -24,11 +25,12 @@ const store = init({
   name: storeName,
   models: {
     ...globalModels,
-    ...homepageModels
+    ...homepageModels,
+    ...selectCityModels
   }
 });
 
 export default store;
-
+global.store = store;
 export const dispatch = createDispatch(SCOPE);
 export const getState = createGetState(SCOPE);

@@ -1,11 +1,13 @@
 /**
  * BaseModel
  */
+import Base from './Base';
 import BaseCollection from './Base.Collection';
 import { type DOC } from './flow.type';
 
-export default class BaseModel {
+export default class BaseModel extends Base {
   constructor(doc: DOC = {}) {
+    super();
     // 实现 getter, setter 属性的存放位置
     this.doc = {};
 

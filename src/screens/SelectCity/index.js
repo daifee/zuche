@@ -11,13 +11,15 @@ import RegionList from './RegionList';
 import CityList from './CityList';
 import { SelectCity as styles } from './styles';
 
+import { dispatch } from './store';
+
 class SelectCity extends React.Component {
   static navigationOptions = () => ({
     title: '选择城市'
   });
 
   componentDidMount() {
-    // TODO
+    dispatch({ type: 'categorizeCities/get' });
   }
 
   render() {

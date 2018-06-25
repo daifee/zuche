@@ -1,14 +1,17 @@
 /**
  * BaseCollection
  */
+import Base from './Base';
 import BaseModel from './Base.Model';
 import { type DOC_ARRAY } from './flow.type';
 
-export default class BaseCollection {
+export default class BaseCollection extends Base {
   position = 0;
   list = [];
 
   constructor(Model = BaseModel, docArray: DOC_ARRAY) {
+    super();
+
     this.Model = Model;
     this.list = docArray.map(doc => new this.Model(doc));
   }
@@ -45,6 +48,21 @@ export default class BaseCollection {
 
   // 与toArray()逻辑相同
   toJSON(): DOC_ARRAY {
-    return this.toObject();
+    return this.toArray();
+  }
+
+  clone() {
+    const copy = new this.constructor([]);
+    Object.keys(this).forEach((key) => {
+      let val = this[key];
+
+      if (key === 'list') {
+        val = [...val];
+      }
+
+      copy[key] = val;
+    });
+
+    return copy;
   }
 }

@@ -1,39 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FlatList, View } from 'react-native';
 import RegionItem from './RegionItem';
-import RegionCollection from '../../../models/Region.Collection';
+import StructCollection from '../../../models/Struct.Collection';
 import { RegionList as styles } from './styles';
 
-const data = new RegionCollection([
-  { id: '0', cnName: '热门' },
-  { id: '1', cnName: '美国' },
-  { id: '2', cnName: '澳大利亚' },
-  { id: '3', cnName: '新西兰' },
-  { id: '4', cnName: '泰国' },
-  { id: '5', cnName: '德国' },
-  { id: '6', cnName: '加拿大' },
-  { id: '11', cnName: '美国' },
-  { id: '21', cnName: '澳大利亚' },
-  { id: '31', cnName: '新西兰' },
-  { id: '41', cnName: '泰国' },
-  { id: '51', cnName: '德国' },
-  { id: '61', cnName: '加拿大' },
-  { id: '12', cnName: '美国' },
-  { id: '22', cnName: '澳大利亚' },
-  { id: '32', cnName: '新西兰' },
-  { id: '42', cnName: '泰国' },
-  { id: '52', cnName: '德国' },
-  { id: '62', cnName: '加拿大' }
-]);
 
-export default function RegionList() {
+export default function RegionList(props) {
+  const { categoties } = props;
+
   return (
     <FlatList
-      data={data.toArray()}
+      data={categoties.toArray()}
       renderItem={({ item, separators }) => {
         return (<RegionItem
           region={item}
-          selected={item.id === '0'}
+          selected={item.id === 0}
           onShowUnderlay={separators.highlight}
           onHideUnderlay={separators.unhighlight}
         />);
@@ -51,3 +33,6 @@ export default function RegionList() {
   );
 }
 
+RegionList.propTypes = {
+  categoties: PropTypes.instanceOf(StructCollection).isRequired
+};

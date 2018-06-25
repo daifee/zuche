@@ -2,8 +2,8 @@
 export const count = {
   state: 2,
   reducers: {
-    add(state) {
-      return state + 1;
+    add(state, payload) {
+      return state + payload;
     }
   }
 };
@@ -12,8 +12,8 @@ export const count = {
 export const num = {
   state: 100,
   effects: {
-    update(state, playload) {
-      return playload;
+    update(payload, rootState) {
+      return rootState;
     }
   }
 };
