@@ -6,14 +6,14 @@ import StructCollection from '../../../models/Struct.Collection';
 import Text from '../../../components/Text';
 
 export default function SideMenu(props) {
-  const { categories, selectedId } = props;
+  const { categories, selectedCategoryId } = props;
 
   return (
     <SideMenuComponent>
       <ScrollView>
         {categories.map((category) => {
           const key = `${category.id}`;
-          const selected = category.id === selectedId;
+          const selected = category.id === selectedCategoryId;
 
           return (
             <SideMenuItem key={key} selected={selected}>
@@ -28,5 +28,5 @@ export default function SideMenu(props) {
 
 SideMenu.propTypes = {
   categories: PropTypes.instanceOf(StructCollection).isRequired,
-  selectedId: PropTypes.number
+  selectedCategoryId: PropTypes.number
 };

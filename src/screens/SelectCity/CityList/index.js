@@ -1,111 +1,90 @@
 import React from 'react';
-import { SectionList, FlatList, View, Text } from 'react-native';
-import CityItem from './CityItem';
-import CityCollection from '../../../models/City.Collection';
-import { CityList as styles } from './styles';
-
-const data = new CityCollection([
-  {
-    id: '1', cnName: '墨尔本', hot: true, letter: 'A'
-  },
-  { id: '2', cnName: '悉尼', letter: 'A' },
-  { id: '3', cnName: '布里斯班', letter: 'B' },
-  { id: '4', cnName: '黄金海岸', letter: 'B' },
-  { id: '5', cnName: '阿德莱德', letter: 'B' },
-  { id: '11', cnName: '墨尔本', letter: 'B' },
-  { id: '12', cnName: '悉尼', letter: 'B' },
-  { id: '13', cnName: '布里斯班', letter: 'B' },
-  { id: '14', cnName: '黄金海岸', letter: 'A' },
-  { id: '15', cnName: '阿德莱德', letter: 'D' },
-  { id: '21', cnName: '墨尔本', letter: 'D' },
-  { id: '22', cnName: '悉尼', letter: 'D' },
-  { id: '23', cnName: '布里斯班', letter: 'D' },
-  { id: '24', cnName: '黄金海岸', letter: 'D' },
-  { id: '25', cnName: '阿德莱德', letter: 'D' },
-  { id: '31', cnName: '墨尔本', letter: 'A' },
-  { id: '32', cnName: '悉尼', letter: 'F' },
-  { id: '33', cnName: '布里斯班', letter: 'F' },
-  { id: '34', cnName: '黄金海岸', letter: 'F' },
-  { id: '35', cnName: '阿德莱德', letter: 'F' },
-  { id: '41', cnName: '墨尔本', letter: 'F' },
-  { id: '42', cnName: '悉尼', letter: 'A' },
-  { id: '43', cnName: '布里斯班', letter: 'U' },
-  { id: '44', cnName: '黄金海岸', letter: 'U' },
-  { id: '45', cnName: '阿德莱德', letter: 'U' },
-  { id: '51', cnName: '墨尔本', letter: 'U' },
-  { id: '52', cnName: '悉尼', letter: 'U' },
-  { id: '53', cnName: '布里斯班', letter: 'U' },
-  {
-    id: '54', cnName: '黄金海岸', hot: true, letter: 'A'
-  },
-  {
-    id: '55', cnName: '阿德莱德', hot: true, letter: 'I'
-  },
-  {
-    id: '61', cnName: '墨尔本', hot: true, letter: 'I'
-  },
-  {
-    id: '62', cnName: '悉尼', hot: true, letter: 'I'
-  },
-  {
-    id: '63', cnName: '布里斯班', hot: true, letter: 'I'
-  },
-  {
-    id: '64', cnName: '黄金海岸', hot: true, letter: 'I'
-  },
-  {
-    id: '65', cnName: '阿德莱德', hot: true, letter: 'A'
-  }
-]);
+import PropTypes from 'prop-types';
+import SectionListComponent from '../../../components/SectionList';
+import StructCollection from '../../../models/Struct.Collection';
+import SectionHeader from './SectionHeader';
+import Section from './Section';
 
 
-export default class CityList extends React.Component {
-  renderSectionHeader({ section }) {
-    return (
-      <View style={styles.sectionHeaderContainer}>
-        <Text>{section.title}</Text>
-      </View>
-    );
-  }
-
-  renderSection({ section }) {
-    return (
-      <FlatList
-        style={styles.sectionContainer}
-        columnWrapperStyle={styles.columnWrapper}
-        key={section.title}
-        data={section.flatListData}
-        numColumns={2}
-        renderItem={({ item }) => {
-          return (
-            <View style={styles.itemWrapper}>
-              <CityItem
-                city={item}
-                selected={item.id === '1'}
-              />
-            </View>
-          );
-        }}
-        keyExtractor={city => `${city.id}`}
-      />
-    );
-  }
-
-  render() {
-    const sections = data.groupForMultipleColumnsSectionList();
-
-    return (
-      <SectionList
-        style={styles.container}
-        sections={sections}
-        renderSectionHeader={this.renderSectionHeader}
-        renderItem={this.renderSection}
-        keyExtractor={(item) => {
-          return `${item.key}`;
-        }}
-        stickySectionHeadersEnabled
-      />
-    );
-  }
+function createSection(id, name, cities) {
+  return { id, name, data: cities };
 }
+
+function groupCitiesByLetter(cities) {
+  const sortedCities = [...cities];
+  sortedCities.sort((l, r) => {
+    return l.enName > r.enName ? 1 : -1;
+  });
+
+  const mapGroups = {};
+  sortedCities.forEach((city) => {
+    const letter = city.enName.substring(0, 1).toUpperCase();
+    if (!mapGroups[letter]) {
+      mapGroups[letter] = {
+        id: letter,
+        data: []
+      };
+    }
+
+    mapGroups[letter].data.push(city);
+  });
+
+  const groups = Object.keys(mapGroups).map((key) => {
+    return mapGroups[key];
+  });
+
+  groups.sort((l, r) => {
+    return l.id > r.id ? 1 : -1;
+  });
+
+  return groups;
+}
+
+export default function CityList(props) {
+  const { categorizedCities, selectedCategoryId } = props;
+
+  let category;
+  const citySections = [];
+  categorizedCities.each((item) => {
+    if (item.id === selectedCategoryId) {
+      category = item;
+    }
+  });
+
+  if (category) {
+    // 热门 hotCities
+    const section = createSection('hotCities', '热门', category.hotCities);
+    citySections.push(section);
+    // 字母顺序&分组 allCities
+    const cityGroups = groupCitiesByLetter(category.allCities);
+    cityGroups.forEach((cityGroup) => {
+      const section = createSection(cityGroup.id, cityGroup.id, cityGroup.data);
+      citySections.push(section);
+    });
+  }
+
+  return (
+    <SectionListComponent
+      sections={citySections}
+      renderSectionHeader={({ section }) => {
+        return (<SectionHeader section={section} />);
+      }}
+      renderSection={(section) => {
+        return (
+          <Section
+            section={section}
+          />
+        );
+      }}
+      keyExtractor={({ id }) => {
+        return id;
+      }}
+    />
+  );
+}
+
+CityList.propTypes = {
+  categorizedCities: PropTypes.instanceOf(StructCollection).isRequired,
+  selectedCategoryId: PropTypes.number.isRequired
+};
 

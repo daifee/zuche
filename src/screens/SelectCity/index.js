@@ -22,15 +22,16 @@ class SelectCity extends React.Component {
   });
 
   static propTypes = {
-    categorizeCities: PropTypes.instanceOf(StructCollection).isRequired
+    categorizedCities: PropTypes.instanceOf(StructCollection).isRequired,
+    selectedCategoryId: PropTypes.number.isRequired
   };
 
   componentDidMount() {
-    dispatch({ type: 'categorizeCities/get' });
+    dispatch({ type: 'categorizedCities/get' });
   }
 
   render() {
-    const { categorizeCities } = this.props;
+    const { categorizedCities, selectedCategoryId } = this.props;
 
     return (
       <View style={styles.container}>
@@ -39,10 +40,16 @@ class SelectCity extends React.Component {
         </View>
         <View style={styles.listWrapper}>
           <View style={styles.regionListWrapper}>
-            <SideMenu categories={categorizeCities} />
+            <SideMenu
+              categories={categorizedCities}
+              selectedCategoryId={selectedCategoryId}
+            />
           </View>
           <View style={styles.cityListWrapper}>
-            <CityList />
+            <CityList
+              categorizedCities={categorizedCities}
+              selectedCategoryId={selectedCategoryId}
+            />
           </View>
         </View>
       </View>
@@ -51,6 +58,6 @@ class SelectCity extends React.Component {
 }
 
 export default connect(() => {
-  const { categorizeCities } = getState();
-  return { categorizeCities };
+  const { categorizedCities, selectedCategoryId } = getState();
+  return { categorizedCities, selectedCategoryId };
 })(SelectCity);

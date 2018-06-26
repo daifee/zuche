@@ -3,7 +3,8 @@ import CityCollection from '../../../models/City.Collection';
 import StructCollection from '../../../models/Struct.Collection';
 import { dispatch } from './apis';
 
-export const categorizeCities = {
+
+export const categorizedCities = {
   state: new StructCollection([]),
 
   reducers: {
@@ -25,23 +26,41 @@ export const categorizeCities = {
 
   effects: {
     get() {
-      dispatch({ type: 'categorizeCities/setLoading' });
+      dispatch({ type: 'categorizedCities/setLoading' });
 
       return CityCollection.getCategorizedCities()
-        .then((categorizeCities) => {
+        .then((categorizedCities) => {
+          const category = categorizedCities.at(0);
+          if (category) {
+            dispatch({
+              type: 'selectedCategoryId/set',
+              payload: category.id
+            });
+          }
+
           dispatch({
-            type: 'categorizeCities/set',
-            payload: categorizeCities
+            type: 'categorizedCities/set',
+            payload: categorizedCities
           });
         })
         .catch((err) => {
           dispatch({
-            type: 'categorizeCities/setLoading',
+            type: 'categorizedCities/setLoading',
             payload: err.message
           });
 
           throw err;
         });
+    }
+  }
+};
+
+
+export const selectedCategoryId = {
+  state: -1,
+  reducers: {
+    set(state, payload: number) {
+      return payload;
     }
   }
 };

@@ -26,7 +26,7 @@ export default class CityCollection extends BaseCollection {
           newItem.allCities = new CityCollection(newItem.allCities);
         }
 
-        return item;
+        return newItem;
       });
 
       resolve(new StructCollection(categories));

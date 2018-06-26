@@ -15,6 +15,11 @@ export default class BaseCollection extends Base {
     this.Model = Model;
     this.list = docArray.map(doc => new this.Model(doc));
   }
+
+  get length() {
+    return this.list.length;
+  }
+
   // iterator接口
   [Symbol.iterator](): BaseCollection {
     return this;
@@ -31,6 +36,10 @@ export default class BaseCollection extends Base {
     }
 
     return result;
+  }
+
+  at(index: number): BaseModel | void {
+    return this.list[index];
   }
 
   map<U>(callback: (value: BaseModel, index: number) => U): Array<U> {

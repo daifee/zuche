@@ -11,7 +11,7 @@ function App() {
   return (
     <React.Fragment>
       <Provider store={store}>
-        <AppNavigation />
+        <AppNavigation persistenceKey="cache-route" />
       </Provider>
       {AnimatedDatePickerApi.register()}
     </React.Fragment>

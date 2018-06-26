@@ -18,12 +18,13 @@ export default class SectionListComponent extends React.Component {
   };
 
   // 使用renderSection代替renderItem
-  renderItem = ({ section }) => {
+  renderItem = ({ item }) => {
     const { renderSection } = this.props;
-    if (section && section.renderSection) {
-      return section.renderSection(section);
+    if (item && item.renderSection) {
+      return item.renderSection(item);
     }
-    return renderSection(section);
+
+    return renderSection(item);
   };
 
   render() {
