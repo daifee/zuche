@@ -4,6 +4,14 @@ zuzuche.com 客户端（React Native）
 
 ---
 
+## 工具
+
+- 手脚架 react-native-cli
+- 调试工具 react-native-debugger
+- 静态检查/格式化代码 eslint, flow, husky, lint-staged, prettier
+- 导航/路由 react-navigation
+- 状态管理 rematch
+
 ## APIs
 
 - 登录
