@@ -23,11 +23,18 @@ export function createModels(models: {}, scope: string): {} {
 }
 
 
-export function createDispatch(scope: string): (action: ACTION) => any {
-  return function scopeDispatch(action: ACTION) {
+export function createDispatch(scope: string): (action: ACTION | string, payload?: any) => any {
+  return function scopeDispatch(action: ACTION | string, payload?: any) {
+    let actionObj;
+    if (typeof action === 'string') {
+      actionObj = { type: action, payload: payload };
+    } else {
+      actionObj = action;
+    }
+
     const newAction = {
-      type: createScopeModelName(action.type, scope),
-      payload: action.payload
+      type: createScopeModelName(actionObj.type, scope),
+      payload: actionObj.payload
     };
     return dispatch(newAction);
   };
