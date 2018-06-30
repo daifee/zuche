@@ -5,6 +5,7 @@ import StructCollection from '../../../models/Struct.Collection';
 import SectionHeader from './SectionHeader';
 import Section from './Section';
 
+import { CityList as styles } from './styles';
 
 function createSection(id, name, cities) {
   return { id, name, data: cities };
@@ -65,6 +66,7 @@ export default function CityList(props) {
 
   return (
     <SectionListComponent
+      style={styles.container}
       sections={citySections}
       renderSectionHeader={({ section }) => {
         return (<SectionHeader section={section} />);
