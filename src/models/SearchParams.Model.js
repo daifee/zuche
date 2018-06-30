@@ -69,5 +69,11 @@ export default class SearchParams extends BaseModel {
   static hoursMinutes(date: Date): string {
     return `${date.getHours()}:${date.getMinutes()}`;
   }
+
+  static getId() {
+    // api https://m.zuzuche.com/w/book/list.php?pickup_city=3243&dropoff_city=3243&from_date_0=2018-7-19&from_date_1=10:00&to_date_0=2018-7-27&to_date_1=10:00&pickup_landmark=99123&dropoff_landmark=99123&
+    // regex /\bid=(\d+)/
+    // todo
+  }
 }
 
