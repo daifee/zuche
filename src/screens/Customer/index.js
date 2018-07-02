@@ -24,6 +24,18 @@ class Customer extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.multipleLines}>
+          <View style={styles.box}><Text>test box</Text></View>
+          <View style={styles.box}><Text>test box</Text></View>
+          <View style={styles.box}><Text>test box</Text></View>
+          <View style={styles.box}><Text>test box</Text></View>
+          <View style={styles.box}><Text>test box</Text></View>
+          <View style={styles.box}><Text>test box</Text></View>
+          <View style={styles.box}><Text>test box</Text></View>
+          <View style={styles.box}><Text>test box</Text></View>
+          <View style={styles.box}><Text>test box</Text></View>
+          <View style={styles.box}><Text>test box</Text></View>
+        </View>
         <Button>我是按钮</Button>
         <ButtonPrimary>我是按钮</ButtonPrimary>
         <View><Text>hhhh</Text></View>
