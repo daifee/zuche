@@ -20,7 +20,7 @@ export const SelectCity = StyleSheet.create({
     flexShrink: 0,
   },
   cityListWrapper: {
-    flexGrow: 1
+    flex: 1
   }
 });
 

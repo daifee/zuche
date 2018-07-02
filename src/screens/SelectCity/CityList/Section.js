@@ -10,7 +10,11 @@ export default function Section(props) {
   return (
     <View style={styles.container}>{section.data.map((city) => {
       const key = `${city.id}`;
-      return (<CityItem key={key} city={city} selected={false} />);
+      return (
+        <View key={key} style={styles.itemWrapper}>
+          <CityItem city={city} selected={false} />
+        </View>
+      );
     })}
     </View>
   );

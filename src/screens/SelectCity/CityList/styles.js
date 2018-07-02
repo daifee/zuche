@@ -8,14 +8,13 @@ export const SectionHeader = StyleSheet.create({
     height: px(88),
     justifyContent: 'center',
     backgroundColor: COMPONENT_BG_COLOR,
-    paddingHorizontal: PADDING.md / 2,
+    paddingHorizontal: PADDING.md,
   }
 });
 
 export const CityList = StyleSheet.create({
   container: {
     backgroundColor: COMPONENT_BG_COLOR,
-    paddingHorizontal: PADDING.md / 2,
   }
 });
 
@@ -23,22 +22,18 @@ export const Section = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    paddingHorizontal: PADDING.md / 2
+  },
+  itemWrapper: {
+    width: '50%',
+    marginBottom: PADDING.md,
   }
 });
 
 
 export const CityItem = StyleSheet.create({
   container: {
-    marginBottom: PADDING.md,
-    flexGrow: 1,
+    marginHorizontal: PADDING.md / 2,
   }
-  // container: {
-  //   height: px(76),
-  //   borderWidth: LINE.width,
-  //   borderColor: LINE.color,
-  //   borderStyle: 'solid',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // }
 });
 
