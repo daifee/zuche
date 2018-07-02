@@ -17,7 +17,7 @@ import { COLOR } from './styles';
 
 const TabBarNavigation = createBottomTabNavigator({
   HomePage: {
-    screen: HomePage,
+    screen: HomePage
   },
   Customer: {
     screen: Customer,
@@ -30,13 +30,15 @@ const TabBarNavigation = createBottomTabNavigator({
   tabBarOptions: {
     activeTintColor: COLOR.primary,
     inactiveTintColor: COLOR.normal
-  }
+  },
 });
-
 
 const AppNavigation = createStackNavigator({
   Root: {
     screen: TabBarNavigation,
+    navigationOptions: {
+      header: null
+    }
   },
   SelectCity: {
     screen: SelectCity,
@@ -61,7 +63,7 @@ const AppNavigation = createStackNavigator({
   }
 }, {
   navigationOptions: {
-    header: null
+    // header: null
   },
   initialRouteName: 'Root',
   headerMode: 'screen'
