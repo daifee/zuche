@@ -20,15 +20,19 @@ import CityModel from '../../models/City.Model';
 
 
 class SelectCity extends React.Component {
-  static navigationOptions = () => ({
-    title: '选择城市'
-  });
+  static navigationOptions = ({ navigation }) => {
+    const type = navigation.getParam('type');
+    return {
+      title: type === 'pickup' ? '选择取车城市' : '选择还车城市'
+    };
+  };
 
   static propTypes = {
     categorizedCities: PropTypes.instanceOf(StructCollection).isRequired,
     selectedCategoryId: PropTypes.number.isRequired,
     selectedCity: PropTypes.instanceOf(CityModel),
-    navigation: PropTypes.instanceOf(Object).isRequired
+    navigation: PropTypes.instanceOf(Object).isRequired,
+    type: PropTypes.oneOf(['pickup', 'dropoff']).isRequired
   };
 
   componentDidMount() {
@@ -43,10 +47,14 @@ class SelectCity extends React.Component {
   };
 
   onPressItem = (city) => {
-    const { selectedCity, navigation } = this.props;
+    const { selectedCity, navigation, type } = this.props;
 
     if (!selectedCity || selectedCity.id !== city.id) {
-      globalDispatch('searchParams/setPickupCity', city);
+      if (type === 'pickup') {
+        globalDispatch('searchParams/setPickupCity', city);
+      } else {
+        globalDispatch('searchParams/setDropoffCity', city);
+      }
     }
 
     navigation.goBack();
@@ -83,11 +91,18 @@ class SelectCity extends React.Component {
 }
 
 export default connect((state, props) => {
+  const { navigation } = props;
+  const type = navigation.getParam('type');
   const { categorizedCities, selectedCategoryId } = getState();
   const { searchParams } = globalGetState();
-  const selectedCity = searchParams.pickupCity;
+  let selectedCity;
+  if (type === 'pickup') {
+    selectedCity = searchParams.pickupCity;
+  } else {
+    selectedCity = searchParams.dropoffCity;
+  }
 
   return {
-    ...props, categorizedCities, selectedCategoryId, selectedCity
+    ...props, type, categorizedCities, selectedCategoryId, selectedCity
   };
 })(SelectCity);

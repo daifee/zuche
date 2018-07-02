@@ -6,15 +6,15 @@ import LandmarkModel from '../../../models/Landmark.Model';
 import { Landmark as styles } from './styles';
 
 export default function Landmark(props) {
-  const { title, site, ...rest } = props;
-  const empty = !site;
+  const { title, landmark, ...rest } = props;
+  const empty = !landmark;
   const textStyle = [styles.text];
   if (empty) textStyle.push(styles.placeholderText);
 
   return (
     <ItemBox {...rest} title={title} style={styles.container}>
       <Text style={[textStyle]}>
-        {empty ? '请选择' : site.cnName}
+        {empty ? '请选择' : landmark.cnName}
       </Text>
     </ItemBox>
   );
@@ -23,5 +23,5 @@ export default function Landmark(props) {
 
 Landmark.propTypes = {
   title: PropTypes.string.isRequired,
-  site: PropTypes.instanceOf(LandmarkModel)
+  landmark: PropTypes.instanceOf(LandmarkModel)
 };

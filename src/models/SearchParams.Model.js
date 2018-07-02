@@ -2,6 +2,7 @@
 import BaseModel from './Base.Model';
 import CityModel from './City.Model';
 import LandmarkModel from './Landmark.Model';
+import { type DOC } from './flow.type';
 
 // from_date_0: 2018-07-03
 // from_date_1: 10:00
@@ -12,11 +13,50 @@ import LandmarkModel from './Landmark.Model';
 // pickup_landmark: 99277
 // dropoff_landmark: 99277
 
-export default class SearchParams extends BaseModel {
-  pickupCity: CityModel;
-  pickupLandmark: LandmarkModel;
-  dropoffCity: CityModel;
-  dropoffLandmark: LandmarkModel;
+export default class SearchParamsModel extends BaseModel {
+  pickupCity: ?CityModel;
+  pickupLandmark: ?LandmarkModel;
+  dropoffCity: ?CityModel;
+  dropoffLandmark: ?LandmarkModel;
+
+  constructor(doc: DOC) {
+    super({});
+    Object.keys(doc).forEach((key) => {
+      const value = doc[key];
+      switch (key) {
+        case 'pickupCity':
+          this[key] = new CityModel(value);
+          break;
+        case 'pickupLandmark':
+          this[key] = new LandmarkModel(value);
+          break;
+        case 'dropoffCity':
+          this[key] = new CityModel(value);
+          break;
+        case 'dropoffLandmark':
+          this[key] = new LandmarkModel(value);
+          break;
+        default:
+          this[key] = value;
+      }
+    });
+  }
+
+  get sameCity(): boolean {
+    return this.doc.sameCity;
+  }
+  set sameCity(val: boolean) {
+    this.doc.sameCity = val;
+
+    if (val) {
+      if (this.pickupCity) {
+        this.dropoffCity = this.pickupCity.clone();
+      }
+      if (this.pickupLandmark) {
+        this.dropoffLandmark = this.pickupLandmark.clone();
+      }
+    }
+  }
 
   get pickupDate(): Date {
     return this.doc.pickupDate || new Date();

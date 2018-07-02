@@ -1,14 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import Time from './Time';
 import TimeAmount from './TimeAmount';
 import { Schedule as styles } from './styles';
-import {
-  getState as globalGetState,
-  dispatch as globalDespatch
-} from '../../../store';
+import { dispatch as globalDespatch } from '../../../store';
 
 import { AnimatedDatePickerApi } from '../../../components/AnimatedDatePicker';
 import SearchParamsModel from '../../../models/SearchParams.Model';
@@ -58,8 +54,4 @@ Schedule.propTypes = {
 };
 
 
-export default connect(() => {
-  const state = globalGetState();
-  const { searchParams } = state;
-  return { searchParams };
-})(Schedule);
+export default Schedule;

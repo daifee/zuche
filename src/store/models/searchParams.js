@@ -7,11 +7,33 @@ pickupDate.setDate(pickupDate.getDate() + 1);
 const dropoffDate = new Date();
 dropoffDate.setDate(dropoffDate.getDate() + 7);
 
+const pickupCity = new CityModel({
+  id: '3359',
+  cnName: '洛杉矶',
+  enName: 'Los Angeles',
+  region: {
+    id: '10158',
+    cnName: 'United States',
+    enName: '美国'
+  },
+  landmark: {
+    id: '99277',
+    cnName: '洛杉矶国际机场',
+    enName: 'Los Angeles Airport'
+  }
+});
+
+const initState = new SearchParamsModel({
+  pickupDate: pickupDate,
+  dropoffDate: dropoffDate,
+  pickupCity: pickupCity,
+  pickupLandmark: pickupCity.landmark
+});
+initState.sameCity = true;
+
+
 export const searchParams = {
-  state: new SearchParamsModel({
-    pickupDate: pickupDate,
-    dropoffDate: dropoffDate
-  }),
+  state: initState,
 
   reducers: {
     setPickupDate(state, date: Date) {
@@ -35,8 +57,13 @@ export const searchParams = {
 
     setDropoffCity(state, city: CityModel) {
       const newState = state.clone();
-      newState.DropoffCity = city;
+      newState.dropoffCity = city;
       newState.dropoffLandmark = city.landmark;
+      return newState;
+    },
+    setSameCity(state, val: boolean) {
+      const newState = state.clone();
+      newState.sameCity = val;
       return newState;
     }
   }
