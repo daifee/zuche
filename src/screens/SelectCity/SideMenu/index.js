@@ -6,7 +6,7 @@ import StructCollection from '../../../models/Struct.Collection';
 import Text from '../../../components/Text';
 
 export default function SideMenu(props) {
-  const { categories, selectedCategoryId } = props;
+  const { categories, selectedCategoryId, onPressItem } = props;
 
   return (
     <SideMenuComponent>
@@ -16,7 +16,15 @@ export default function SideMenu(props) {
           const selected = category.id === selectedCategoryId;
 
           return (
-            <SideMenuItem key={key} selected={selected}>
+            <SideMenuItem
+              key={key}
+              selected={selected}
+              onPress={() => {
+                if (onPressItem) {
+                  onPressItem(category);
+                }
+              }}
+            >
               <Text>{category.name}</Text>
             </SideMenuItem>
           );
@@ -28,5 +36,6 @@ export default function SideMenu(props) {
 
 SideMenu.propTypes = {
   categories: PropTypes.instanceOf(StructCollection).isRequired,
-  selectedCategoryId: PropTypes.number
+  selectedCategoryId: PropTypes.number,
+  onPressItem: PropTypes.func.isRequired
 };

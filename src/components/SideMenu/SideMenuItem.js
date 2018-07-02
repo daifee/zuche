@@ -9,7 +9,7 @@ import { textStyle } from '../../propTypes';
 
 export default function SideMenuItem(props) {
   const {
-    style, textStyle, children, onPress, selected, underlayColor, ...rest
+    style, textStyle, children, onPress, selected, ...rest
   } = props;
 
   const selectedStyle = selected ? {
@@ -21,7 +21,7 @@ export default function SideMenuItem(props) {
   return (
     <TouchableHighlight
       {...rest}
-      onPress={selected ? undefined : onPress}
+      onPress={onPress}
       style={[styles.container, selectedStyle.container, style]}
     >
       <React.Fragment>

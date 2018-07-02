@@ -42,7 +42,7 @@ function groupCitiesByLetter(cities) {
 }
 
 export default function CityList(props) {
-  const { categorizedCities, selectedCategoryId } = props;
+  const { categorizedCities, selectedCategoryId, onPressItem } = props;
 
   let category;
   const citySections = [];
@@ -75,6 +75,7 @@ export default function CityList(props) {
         return (
           <Section
             section={section}
+            onPressItem={onPressItem}
           />
         );
       }}
@@ -87,6 +88,7 @@ export default function CityList(props) {
 
 CityList.propTypes = {
   categorizedCities: PropTypes.instanceOf(StructCollection).isRequired,
-  selectedCategoryId: PropTypes.number.isRequired
+  selectedCategoryId: PropTypes.number.isRequired,
+  onPressItem: PropTypes.func.isRequired
 };
 

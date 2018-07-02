@@ -30,6 +30,17 @@ class SelectCity extends React.Component {
     dispatch({ type: 'categorizedCities/get' });
   }
 
+  onPressMenuItem = (category) => {
+    const { selectedCategoryId } = this.props;
+    if (category.id !== selectedCategoryId) {
+      dispatch('selectedCategoryId/set', category.id);
+    }
+  };
+
+  onPressItem = (city) => {
+    console.log(city);
+  };
+
   render() {
     const { categorizedCities, selectedCategoryId } = this.props;
 
@@ -43,12 +54,14 @@ class SelectCity extends React.Component {
             <SideMenu
               categories={categorizedCities}
               selectedCategoryId={selectedCategoryId}
+              onPressItem={this.onPressMenuItem}
             />
           </View>
           <View style={styles.cityListWrapper}>
             <CityList
               categorizedCities={categorizedCities}
               selectedCategoryId={selectedCategoryId}
+              onPressItem={this.onPressItem}
             />
           </View>
         </View>
