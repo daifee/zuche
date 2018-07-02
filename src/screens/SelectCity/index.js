@@ -14,7 +14,10 @@ import CityList from './CityList';
 import { SelectCity as styles } from './styles';
 
 import { dispatch, getState } from './store';
+import { getState as globalGetState, dispatch as globalDispatch } from '../../store';
 import StructCollection from '../../models/Struct.Collection';
+import CityModel from '../../models/City.Model';
+
 
 class SelectCity extends React.Component {
   static navigationOptions = () => ({
@@ -23,7 +26,9 @@ class SelectCity extends React.Component {
 
   static propTypes = {
     categorizedCities: PropTypes.instanceOf(StructCollection).isRequired,
-    selectedCategoryId: PropTypes.number.isRequired
+    selectedCategoryId: PropTypes.number.isRequired,
+    selectedCity: PropTypes.instanceOf(CityModel),
+    navigation: PropTypes.instanceOf(Object).isRequired
   };
 
   componentDidMount() {
@@ -38,11 +43,17 @@ class SelectCity extends React.Component {
   };
 
   onPressItem = (city) => {
-    console.log(city);
+    const { selectedCity, navigation } = this.props;
+
+    if (!selectedCity || selectedCity.id !== city.id) {
+      globalDispatch('searchParams/setPickupCity', city);
+    }
+
+    navigation.goBack();
   };
 
   render() {
-    const { categorizedCities, selectedCategoryId } = this.props;
+    const { categorizedCities, selectedCategoryId, selectedCity } = this.props;
 
     return (
       <View style={styles.container}>
@@ -61,6 +72,7 @@ class SelectCity extends React.Component {
             <CityList
               categorizedCities={categorizedCities}
               selectedCategoryId={selectedCategoryId}
+              selectedCity={selectedCity}
               onPressItem={this.onPressItem}
             />
           </View>
@@ -70,7 +82,12 @@ class SelectCity extends React.Component {
   }
 }
 
-export default connect(() => {
+export default connect((state, props) => {
   const { categorizedCities, selectedCategoryId } = getState();
-  return { categorizedCities, selectedCategoryId };
+  const { searchParams } = globalGetState();
+  const selectedCity = searchParams.pickupCity;
+
+  return {
+    ...props, categorizedCities, selectedCategoryId, selectedCity
+  };
 })(SelectCity);

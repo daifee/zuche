@@ -6,6 +6,7 @@ import SectionHeader from './SectionHeader';
 import Section from './Section';
 
 import { CityList as styles } from './styles';
+import CityModel from '../../../models/City.Model';
 
 function createSection(id, name, cities) {
   return { id, name, data: cities };
@@ -42,7 +43,9 @@ function groupCitiesByLetter(cities) {
 }
 
 export default function CityList(props) {
-  const { categorizedCities, selectedCategoryId, onPressItem } = props;
+  const {
+    categorizedCities, selectedCategoryId, selectedCity, onPressItem
+  } = props;
 
   let category;
   const citySections = [];
@@ -75,6 +78,7 @@ export default function CityList(props) {
         return (
           <Section
             section={section}
+            selectedCity={selectedCity}
             onPressItem={onPressItem}
           />
         );
@@ -89,6 +93,7 @@ export default function CityList(props) {
 CityList.propTypes = {
   categorizedCities: PropTypes.instanceOf(StructCollection).isRequired,
   selectedCategoryId: PropTypes.number.isRequired,
+  selectedCity: PropTypes.instanceOf(CityModel),
   onPressItem: PropTypes.func.isRequired
 };
 
