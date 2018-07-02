@@ -18,8 +18,14 @@ function Schedule(props) {
         title="取车时间"
         date={pickupDate}
         onPress={() => {
+          const minimumDate = new Date();
+          const maximumDate = new Date();
+          maximumDate.setFullYear(maximumDate.getFullYear() + 1);
+
           AnimatedDatePickerApi.show({
             date: pickupDate,
+            minimumDate: minimumDate,
+            maximumDate: maximumDate,
             onConfirm(date) {
               globalDespatch({
                 type: 'searchParams/setPickupDate',
@@ -34,8 +40,14 @@ function Schedule(props) {
         title="还车时间"
         date={dropoffDate}
         onPress={() => {
+          const minimumDate = pickupDate;
+          const maximumDate = new Date();
+          maximumDate.setFullYear(maximumDate.getFullYear() + 1);
+
           AnimatedDatePickerApi.show({
             date: dropoffDate,
+            minimumDate: minimumDate,
+            maximumDate: maximumDate,
             onConfirm(date) {
               globalDespatch({
                 type: 'searchParams/setDropoffDate',
