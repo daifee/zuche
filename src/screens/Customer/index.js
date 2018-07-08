@@ -7,7 +7,7 @@ import List from '../../components/List';
 import CheckBox from '../../components/CheckBox';
 import CheckButton from '../../components/CheckButton';
 import SideMenu, { SideMenuItem } from '../../components/SideMenu';
-
+import { Toast } from '../../components/AnimateToast';
 
 class Customer extends React.Component {
   static navigationOptions = {
@@ -36,6 +36,11 @@ class Customer extends React.Component {
           <View style={styles.box}><Text>test box</Text></View>
           <View style={styles.box}><Text>test box</Text></View>
         </View>
+        <Toast type="loading" content="加载中..." />
+        <Toast type="success" content="成功" />
+        <Toast type="error" content="失败" />
+        <Toast type="warning" content="警告" />
+        <Toast type="info" content="信息" />
         <Button>我是按钮</Button>
         <ButtonPrimary>我是按钮</ButtonPrimary>
         <View><Text>hhhh</Text></View>
