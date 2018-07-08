@@ -5,7 +5,7 @@ import AppNavigation from './AppNavigation';
 import store from './store';
 
 import { AnimatedDatePickerApi } from './components/AnimatedDatePicker';
-
+import { register as registerAnimatedToast } from './components/AnimatedToast';
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         <AppNavigation persistenceKey="cache-route" />
       </Provider>
       {AnimatedDatePickerApi.register()}
+      {registerAnimatedToast()}
     </React.Fragment>
   );
 }

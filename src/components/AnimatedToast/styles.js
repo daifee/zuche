@@ -4,7 +4,8 @@ import px from '../../utils/px';
 
 export const Toast = StyleSheet.create({
   container: {
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    flex: -1,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: PADDING.lg,
@@ -17,5 +18,15 @@ export const Toast = StyleSheet.create({
   },
   content: {
     color: '#fff'
+  }
+});
+
+export const AnimdatedToast = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: '30%',
+    left: 0,
+    width: '100%'
   }
 });

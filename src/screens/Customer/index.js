@@ -5,9 +5,9 @@ import { Customer as styles } from './styles';
 import Button, { ButtonPrimary } from '../../components/Button';
 import List from '../../components/List';
 import CheckBox from '../../components/CheckBox';
-import CheckButton from '../../components/CheckButton';
-import SideMenu, { SideMenuItem } from '../../components/SideMenu';
-import { Toast } from '../../components/AnimateToast';
+// import CheckButton from '../../components/CheckButton';
+// import SideMenu, { SideMenuItem } from '../../components/SideMenu';
+import { Toast, AnimatedToastContainer } from '../../components/AnimatedToast';
 
 class Customer extends React.Component {
   static navigationOptions = {
@@ -37,7 +37,7 @@ class Customer extends React.Component {
           <View style={styles.box}><Text>test box</Text></View>
         </View>
         <Toast type="loading" content="加载中..." />
-        <Toast type="success" content="成功" />
+
         <Toast type="error" content="失败" />
         <Toast type="warning" content="警告" />
         <Toast type="info" content="信息" />
@@ -57,29 +57,7 @@ class Customer extends React.Component {
             footer={<CheckBox />}
           />
         </List>
-        <View><Text>hhhh</Text></View>
-        <View style={{
-          // flex: 1,
-          width: '100%',
-          backgroundColor: '#ffffff',
-          paddingVertical: 20
-        }}
-        >
-          <CheckButton disable checked style={{ width: 100 }}>
-            请选择
-          </CheckButton>
-
-          <SideMenu>
-            <SideMenuItem>全部</SideMenuItem>
-            <SideMenuItem selected>
-              <Text>中国</Text>
-              <Text>China</Text>
-            </SideMenuItem>
-            <SideMenuItem>德哥</SideMenuItem>
-            <SideMenuItem>法国</SideMenuItem>
-            <SideMenuItem>美利坚共和党</SideMenuItem>
-          </SideMenu>
-        </View>
+        <AnimatedToastContainer type="success" content="成功" />
       </View>
     );
   }
