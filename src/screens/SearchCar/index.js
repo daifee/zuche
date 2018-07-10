@@ -12,6 +12,7 @@ import HotOptionList from './HotOptionList';
 import SideMenu from './SideMenu';
 import CarList from './CarList';
 import { SearchCar as styles } from './styles';
+import SearchParamsModel from '../../models/SearchParams.Model';
 
 export default class SearchCar extends React.Component {
   static navigationOptions = {
@@ -19,7 +20,13 @@ export default class SearchCar extends React.Component {
   };
 
   componentDidMount() {
-    // todo
+    SearchParamsModel.getId()
+      .then((id) => {
+        console.log(id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {

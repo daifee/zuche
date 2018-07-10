@@ -3,15 +3,8 @@ import BaseModel from './Base.Model';
 import CityModel from './City.Model';
 import LandmarkModel from './Landmark.Model';
 import { type DOC } from './flow.type';
+import { zuzuche as zuzucheService } from '../utils/http';
 
-// from_date_0: 2018-07-03
-// from_date_1: 10:00
-// to_date_0: 2018-07-10
-// to_date_1: 10:00
-// pickup_city: 3359
-// dropoff_city: 3359
-// pickup_landmark: 99277
-// dropoff_landmark: 99277
 
 export default class SearchParamsModel extends BaseModel {
   pickupCity: ?CityModel;
@@ -110,10 +103,26 @@ export default class SearchParamsModel extends BaseModel {
     return `${date.getHours()}:${date.getMinutes()}`;
   }
 
-  static getId() {
+  static async getId() {
     // api https://m.zuzuche.com/w/book/list.php?pickup_city=3243&dropoff_city=3243&from_date_0=2018-7-19&from_date_1=10:00&to_date_0=2018-7-27&to_date_1=10:00&pickup_landmark=99123&dropoff_landmark=99123&
     // regex /\bid=(\d+)/
     // todo
+    return zuzucheService.get('/w/book/list.php', {
+      params: {
+        pickup_city: 3243,
+        pickup_landmark: 99123,
+        dropoff_city: 3243,
+        dropoff_landmark: 99123,
+        from_date_0: '2018-9-10',
+        from_date_1: '10:00',
+        to_date_0: 'z018-9-17',
+        to_date_1: '10:00'
+      }
+    }).then((res) => {
+      const reg = /\bid=(\d+)/;
+      const result = reg.exec(res.data);
+      return result[1];
+    });
   }
 }
 
