@@ -36,6 +36,11 @@ export const searchParams = {
   state: initState,
 
   reducers: {
+    setCid(state, cid: string) {
+      const newState = state.clone();
+      newState.cid = cid;
+      return newState;
+    },
     setPickupDate(state, date: Date) {
       const newState = state.clone();
       newState.pickupDate = date;

@@ -1,4 +1,4 @@
-
+import dayjs from 'dayjs';
 import BaseModel from './Base.Model';
 import CityModel from './City.Model';
 import LandmarkModel from './Landmark.Model';
@@ -7,6 +7,7 @@ import { zuzuche as zuzucheService } from '../utils/http';
 
 
 export default class SearchParamsModel extends BaseModel {
+  cid: ?string;
   pickupCity: ?CityModel;
   pickupLandmark: ?LandmarkModel;
   dropoffCity: ?CityModel;
@@ -103,20 +104,22 @@ export default class SearchParamsModel extends BaseModel {
     return `${date.getHours()}:${date.getMinutes()}`;
   }
 
-  static async getId() {
+  static async getCid(searchParams: SearchParamsModel) {
     // api https://m.zuzuche.com/w/book/list.php?pickup_city=3243&dropoff_city=3243&from_date_0=2018-7-19&from_date_1=10:00&to_date_0=2018-7-27&to_date_1=10:00&pickup_landmark=99123&dropoff_landmark=99123&
     // regex /\bid=(\d+)/
     // todo
+    const pickupDate = dayjs(searchParams.pickupDate);
+    const dropoffDate = dayjs(searchParams.dropoffDate);
     return zuzucheService.get('/w/book/list.php', {
       params: {
-        pickup_city: 3243,
-        pickup_landmark: 99123,
-        dropoff_city: 3243,
-        dropoff_landmark: 99123,
-        from_date_0: '2018-9-10',
-        from_date_1: '10:00',
-        to_date_0: 'z018-9-17',
-        to_date_1: '10:00'
+        pickup_city: searchParams.pickupCity.id,
+        pickup_landmark: searchParams.pickupLandmark.id,
+        dropoff_city: searchParams.dropoffCity.id,
+        dropoff_landmark: searchParams.dropoffLandmark.id,
+        from_date_0: pickupDate.format('YYYY-MM-DD'),
+        from_date_1: pickupDate.format('HH:mm'),
+        to_date_0: dropoffDate.format('YYYY-MM-DD'),
+        to_date_1: dropoffDate.format('HH:mm')
       }
     }).then((res) => {
       const reg = /\bid=(\d+)/;

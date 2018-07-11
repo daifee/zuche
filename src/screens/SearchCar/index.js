@@ -6,23 +6,33 @@
  * * CarList
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { connect } from 'react-redux';
 import { HeaderSchedule as Header } from '../../components/Header';
 import HotOptionList from './HotOptionList';
 import SideMenu from './SideMenu';
 import CarList from './CarList';
 import { SearchCar as styles } from './styles';
 import SearchParamsModel from '../../models/SearchParams.Model';
+import { getState as globalGetState, dispatch as globalDispatch } from '../../store';
 
-export default class SearchCar extends React.Component {
+
+class SearchCar extends React.Component {
   static navigationOptions = {
     header: Header
   };
 
+  static propTypes = {
+    searchParams: PropTypes.instanceOf(SearchParamsModel).isRequired
+  };
+
   componentDidMount() {
-    SearchParamsModel.getId()
-      .then((id) => {
-        console.log(id);
+    const { searchParams } = this.props;
+
+    SearchParamsModel.getCid(searchParams)
+      .then((cid) => {
+        globalDispatch('searchParams/setCid', cid);
       })
       .catch((err) => {
         console.log(err);
@@ -48,3 +58,9 @@ export default class SearchCar extends React.Component {
   }
 }
 
+export default connect(() => {
+  const { searchParams } = globalGetState();
+  return {
+    searchParams
+  };
+})(SearchCar);
