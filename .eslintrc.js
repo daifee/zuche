@@ -9,7 +9,8 @@ module.exports = {
     "arrow-body-style": 0,
     "class-methods-use-this": 0,
     "no-shadow": 0,
-    "object-shorthand": 0
+    "object-shorthand": 0,
+    "camelcase": 0
     // "camelcase": 0
     // "react/forbid-prop-types": 0
   }
