@@ -9,6 +9,7 @@ import { SearchSection as styles } from './styles';
 import { getState as globalGetState } from '../../../store';
 import SearchParams from '../../../models/SearchParams.Model';
 
+
 function SearchSection(props) {
   const { searchParams } = props;
 

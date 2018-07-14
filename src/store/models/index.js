@@ -1,3 +1,4 @@
 
-export { searchParams } from './searchParams';
+
+export { default as searchParams } from './searchParams';
 

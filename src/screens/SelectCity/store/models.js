@@ -1,7 +1,7 @@
 
 import CityCollection from '../../../models/City.Collection';
 import StructCollection from '../../../models/Struct.Collection';
-import { dispatch } from './apis';
+import * as selectCityStore from './index';
 
 
 export const categorizedCities = {
@@ -26,28 +26,19 @@ export const categorizedCities = {
 
   effects: {
     get() {
-      dispatch({ type: 'categorizedCities/setLoading' });
+      this.setLoading();
 
       return CityCollection.getCategorizedCities()
         .then((categorizedCities) => {
           const category = categorizedCities.at(0);
           if (category) {
-            dispatch({
-              type: 'selectedCategoryId/set',
-              payload: category.id
-            });
+            selectCityStore.dispatch('selectedCategoryId/set', category.id);
           }
 
-          dispatch({
-            type: 'categorizedCities/set',
-            payload: categorizedCities
-          });
+          this.set(categorizedCities);
         })
         .catch((err) => {
-          dispatch({
-            type: 'categorizedCities/setLoading',
-            payload: err.message
-          });
+          this.setFailure(err.message);
 
           throw err;
         });

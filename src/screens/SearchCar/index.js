@@ -16,23 +16,35 @@ import CarList from './CarList';
 import { SearchCar as styles } from './styles';
 import SearchParamsModel from '../../models/SearchParams.Model';
 import { getState as globalGetState, dispatch as globalDispatch } from '../../store';
+import { dispatch } from './store';
 
 
 class SearchCar extends React.Component {
-  static navigationOptions = {
-    header: Header
+  static navigationOptions = ({ navigation }) => {
+    let searchParams = navigation.getParam('searchParams');
+
+    if (searchParams && !(searchParams instanceof SearchParamsModel)) {
+      searchParams = new SearchParamsModel(searchParams);
+    }
+
+    return {
+      header: <Header searchParams={searchParams} />
+    };
   };
 
   static propTypes = {
-    searchParams: PropTypes.instanceOf(SearchParamsModel).isRequired
+    searchParams: PropTypes.instanceOf(SearchParamsModel).isRequired,
+    navigation: PropTypes.instanceOf(Object).isRequired
   };
 
   componentDidMount() {
-    const { searchParams } = this.props;
+    const { searchParams, navigation } = this.props;
 
-    SearchParamsModel.getCid(searchParams)
+    navigation.setParams({ searchParams });
+
+    globalDispatch('searchParams/getCid')
       .then((cid) => {
-        globalDispatch('searchParams/setCid', cid);
+        dispatch('carList/get', { cid });
       })
       .catch((err) => {
         console.log(err);
@@ -58,9 +70,11 @@ class SearchCar extends React.Component {
   }
 }
 
-export default connect(() => {
+export default connect((props) => {
   const { searchParams } = globalGetState();
+
   return {
+    ...props,
     searchParams
   };
 })(SearchCar);

@@ -1,6 +1,7 @@
 import SearchParamsModel from '../../models/SearchParams.Model';
 import CityModel from '../../models/City.Model';
-import { getState, dispatch } from '../apis';
+import * as globalStore from '../index';
+
 
 const pickupDate = new Date();
 pickupDate.setDate(pickupDate.getDate() + 1);
@@ -32,7 +33,7 @@ const initState = new SearchParamsModel({
 initState.sameCity = true;
 
 
-export const searchParams = {
+export default {
   state: initState,
 
   reducers: {
@@ -91,17 +92,16 @@ export const searchParams = {
 
   effects: {
     getCid() {
-      const { searchParams } = getState();
-
-      dispatch('searchParams/setLoading');
+      const { searchParams } = globalStore.getState();
+      this.setLoading();
 
       return SearchParamsModel.getCid(searchParams)
         .then((cid) => {
-          dispatch('searchParams/setCid', cid);
+          this.setCid(cid);
           return cid;
         })
         .catch((err) => {
-          dispatch('searchParams/setFailure', err.message);
+          this.setFailure(err.message);
           throw err;
         });
     }

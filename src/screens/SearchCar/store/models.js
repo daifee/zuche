@@ -2,7 +2,7 @@ import CarFilterCollection from '../../../models/CarFilter.Collection';
 import CarKindCollection from '../../../models/CarKind.Collection';
 import CarCollection from '../../../models/Car.Collection';
 import CarModel from '../../../models/Car.Model';
-import { dispatch } from './apis';
+
 
 export const filterList = {
   state: new CarFilterCollection([]),
@@ -76,7 +76,7 @@ export const carList = {
       filter: {[filterType: string]: string},
       kind: number | string
     } = {}, rootState) {
-      dispatch('carList/setLoading');
+      this.setLoading();
 
       CarModel.search(payload.cid, payload.filter, payload.kind)
         .then((res) => {

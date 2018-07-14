@@ -19,7 +19,21 @@ export default class BaseModel extends Base {
   // 将Model转化为{}。递归所有Model.toObject()和Collection.toArray()
   toObject(): DOC {
     const result = {};
-    Object.keys(this).forEach((key) => {
+    // TODO 优化 doc 这个属性逻辑
+    const map = {
+      doc: true
+    };
+    let keys = Object.keys(this).concat(Object.keys(this.doc));
+    keys = keys.filter((key) => {
+      if (map[key]) {
+        return false;
+      }
+
+      map[key] = true;
+      return true;
+    });
+
+    keys.forEach((key) => {
       let val = this[key];
 
       if (val instanceof BaseModel) {

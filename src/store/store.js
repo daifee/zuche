@@ -1,18 +1,14 @@
 
 import { init } from '@rematch/core';
-import { storeName, createModels } from './scope';
-import { SCOPE } from './apis';
 // 全局models
-import * as models from './models';
+import { scopeModels as globalModels } from './scope';
 // 页面models
-import { models as homepageModels } from '../screens/HomePage/store';
-import { models as selectCityModels } from '../screens/SelectCity/store';
-import { models as searchCarModels } from '../screens/SearchCar/store';
-
-const globalModels = createModels(models, SCOPE);
+import { scopeModels as homepageModels } from '../screens/HomePage/store';
+import { scopeModels as selectCityModels } from '../screens/SelectCity/store';
+import { scopeModels as searchCarModels } from '../screens/SearchCar/store';
 
 const store = init({
-  name: storeName,
+  name: 'store',
   models: {
     ...globalModels,
     ...homepageModels,

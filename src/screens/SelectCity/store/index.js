@@ -1,10 +1,18 @@
-import * as originModels from './models';
-import { createModels } from '../../../store/scope';
+import * as models from './models';
+import createScopeModels from '../../../store/createScopeModels';
+import createScopeDispatch from '../../../store/createScopeDispatch';
+import createScopeGetState from '../../../store/createScopeGetState';
 
-import { SCOPE, dispatch, getState } from './apis';
 
-export const models = createModels(originModels, SCOPE);
+const SCOPE = 'SELECT_CITY';
+
+const scopeModels = createScopeModels(models, SCOPE);
+const dispatch = createScopeDispatch(SCOPE);
+const getState = createScopeGetState(SCOPE);
+
+
 export {
+  scopeModels,
   dispatch,
   getState
 };

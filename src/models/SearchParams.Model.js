@@ -56,6 +56,11 @@ export default class SearchParamsModel extends BaseModel {
     return this.doc.pickupDate || new Date();
   }
   set pickupDate(date: Date) {
+    if (!(date instanceof Date)) {
+      // eslint-disable-next-line
+      date = new Date(date);
+    }
+
     this.doc.pickupDate = date;
 
     // 如果取车时间大于还车时间，重置还车时间
@@ -72,6 +77,10 @@ export default class SearchParamsModel extends BaseModel {
     return this.doc.dropoffDate || new Date();
   }
   set dropoffDate(date: Date) {
+    if (!(date instanceof Date)) {
+      // eslint-disable-next-line
+      date = new Date(date);
+    }
     this.doc.dropoffDate = date;
 
     // 如果还车时间小于取车时间，重置取车时间
@@ -88,6 +97,7 @@ export default class SearchParamsModel extends BaseModel {
     const timeOffset = dropoffDate.getTime() - pickupDate.getTime();
     const totalDays = timeOffset / 1000 / 60 / 60 / 24;
     return Math.ceil(totalDays);
+    // return 8;
   }
 
 
