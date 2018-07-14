@@ -16,7 +16,7 @@ import { storeName, createModels, createDispatch, createGetState } from './scope
 import * as models from './models';
 import { models as homepageModels } from '../screens/HomePage/store';
 import { models as selectCityModels } from '../screens/SelectCity/store';
-
+import { models as searchCarModels } from '../screens/SearchCar/store';
 
 const SCOPE = 'GLOBAL';
 const globalModels = createModels(models, SCOPE);
@@ -26,7 +26,8 @@ const store = init({
   models: {
     ...globalModels,
     ...homepageModels,
-    ...selectCityModels
+    ...selectCityModels,
+    ...searchCarModels
   }
 });
 
