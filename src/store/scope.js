@@ -1,6 +1,7 @@
 import { dispatch, getState } from '@rematch/core';
 import { type ACTION } from './flow.type';
 
+
 function createScopeModelName(modelName: string, scope: string): string {
   return `${scope}@${modelName}`;
 }

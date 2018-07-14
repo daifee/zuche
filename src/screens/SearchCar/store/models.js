@@ -1,6 +1,7 @@
 import CarFilterCollection from '../../../models/CarFilter.Collection';
 import CarKindCollection from '../../../models/CarKind.Collection';
 import CarCollection from '../../../models/Car.Collection';
+import CarModel from '../../../models/Car.Model';
 import { dispatch } from './apis';
 
 export const filterList = {
@@ -41,9 +42,9 @@ export const kindList = {
 };
 
 export const checkedKind = {
-  state: -1,
+  state: 'all',
   reducers: {
-    set(state, payload: number) {
+    set(state, payload: number | string) {
       return payload;
     }
   }
@@ -70,10 +71,20 @@ export const carList = {
   },
 
   effects: {
-    get(payload, rootState) {
+    get(payload: {
+      cid: string,
+      filter: {[filterType: string]: string},
+      kind: number | string
+    } = {}, rootState) {
       dispatch('carList/setLoading');
 
-      // todo
+      CarModel.search(payload.cid, payload.filter, payload.kind)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       // dispatch('carList/set', carList);
       // dispatch('carList/setFailure', err.message);
 

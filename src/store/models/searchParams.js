@@ -1,6 +1,6 @@
 import SearchParamsModel from '../../models/SearchParams.Model';
 import CityModel from '../../models/City.Model';
-
+import { getState, dispatch } from '../apis';
 
 const pickupDate = new Date();
 pickupDate.setDate(pickupDate.getDate() + 1);
@@ -36,11 +36,27 @@ export const searchParams = {
   state: initState,
 
   reducers: {
+    setLoading(state) {
+      const newState = state.clone();
+      newState.asyncStatus = 'PENDING';
+      return newState;
+    },
+
+    setFailure(state, message: string) {
+      const newState = state.clone();
+      newState.asyncStatus = 'FAILURE';
+      newState.asyncMessage = message;
+      return newState;
+    },
+
     setCid(state, cid: string) {
       const newState = state.clone();
       newState.cid = cid;
+      newState.asyncStatus = 'SUCCESS';
+      newState.asyncMessage = '请求成功';
       return newState;
     },
+
     setPickupDate(state, date: Date) {
       const newState = state.clone();
       newState.pickupDate = date;
@@ -70,6 +86,24 @@ export const searchParams = {
       const newState = state.clone();
       newState.sameCity = val;
       return newState;
+    }
+  },
+
+  effects: {
+    getCid() {
+      const { searchParams } = getState();
+
+      dispatch('searchParams/setLoading');
+
+      return SearchParamsModel.getCid(searchParams)
+        .then((cid) => {
+          dispatch('searchParams/setCid', cid);
+          return cid;
+        })
+        .catch((err) => {
+          dispatch('searchParams/setFailure', err.message);
+          throw err;
+        });
     }
   }
 };
