@@ -1,7 +1,10 @@
+
+
 import CarFilterCollection from '../../../models/CarFilter.Collection';
 import CarKindCollection from '../../../models/CarKind.Collection';
 import CarCollection from '../../../models/Car.Collection';
 import CarModel from '../../../models/Car.Model';
+import * as scopeStore from './index';
 
 
 export const filterList = {
@@ -75,20 +78,19 @@ export const carList = {
       cid: string,
       filter: {[filterType: string]: string},
       kind: number | string
-    } = {}, rootState) {
+    } = {}) {
       this.setLoading();
 
-      CarModel.search(payload.cid, payload.filter, payload.kind)
-        .then((res) => {
-          console.log(res);
+      return CarModel.search(payload.cid, payload.filter, payload.kind)
+        .then((struct) => {
+          scopeStore.dispatch('filterList/set', struct.carFilterList);
+          scopeStore.dispatch('kindList/set', struct.carKindList);
+          this.set(struct.carList);
         })
         .catch((err) => {
-          console.log(err);
+          this.setFailure(err.message);
+          throw err;
         });
-      // dispatch('carList/set', carList);
-      // dispatch('carList/setFailure', err.message);
-
-      return rootState;
     }
   }
 };
