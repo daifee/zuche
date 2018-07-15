@@ -32,12 +32,15 @@ export default function CarProvider({ meal }) {
           <Text style={styles.traffic}>{pickupShop.shopAddress}</Text>
           <Text style={styles.bookingTips}>{meal.supplier_policy}</Text>
 
-          {meal.feature.map((item, index) => {
-            const key = `${index}`;
-            return (
-              <Text key={key} style={styles.service}>{item.name}</Text>
-            );
-          })}
+          {meal.feature
+            .filter((item = {}) => !item.name)
+            .map((item = {}, index) => {
+              const key = `${index}`;
+              return (
+                <Text key={key} style={styles.service}>{item.name}</Text>
+              );
+            })
+          }
         </View>
       )}
       footer={(
@@ -47,8 +50,6 @@ export default function CarProvider({ meal }) {
             <Text style={styles.price}>{meal.unit_price}</Text>
             /天
           </Text>
-          <Text style={styles.privilege}>优惠提示1</Text>
-          <Text style={styles.privilege}>优惠提示2</Text>
         </View>
       )}
     />

@@ -59,9 +59,10 @@ export default class CarModel extends BaseModel {
 
       const mapShop = data.shop || {};
 
-      const result = new StructModel({});
-      result.carKindList = new CarKindCollection(kindList);
-      result.carFilterList = new CarFilterCollection(filterList);
+      const resultModel = new StructModel({});
+      resultModel.complete = data.info.complete;
+      resultModel.carKindList = new CarKindCollection(kindList);
+      resultModel.carFilterList = new CarFilterCollection(filterList);
 
       carList = carList.map((car) => {
         const mealList = (car.meal_list || []).map((meal) => {
@@ -82,9 +83,9 @@ export default class CarModel extends BaseModel {
           meal_list: new CarMealCollection(mealList)
         };
       });
-      result.carList = new CarCollection(carList);
+      resultModel.carList = new CarCollection(carList);
 
-      return result;
+      return resultModel;
     });
   }
 }

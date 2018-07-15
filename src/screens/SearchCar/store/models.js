@@ -79,18 +79,52 @@ export const carList = {
       filter: {[filterType: string]: string},
       kind: number | string
     } = {}) {
+      let times = 0;
+      const pollGet = () => {
+        times += 1;
+        return CarModel.search(payload.cid, payload.filter, payload.kind)
+          .then((struct) => {
+            const {
+              carFilterList, carKindList, carList, complete
+            } = struct;
+            const finish = times >= 3 || complete;
+            // const finish = true;
+
+            scopeStore.dispatch('filterList/set', carFilterList);
+            scopeStore.dispatch('kindList/set', carKindList);
+
+            if (!finish) {
+              carList.asyncStatus = 'PENDING';
+            }
+
+            this.set(carList);
+
+            if (finish) {
+              return struct;
+            }
+            return pollGet();
+          });
+      };
+
+
       this.setLoading();
 
-      return CarModel.search(payload.cid, payload.filter, payload.kind)
-        .then((struct) => {
-          scopeStore.dispatch('filterList/set', struct.carFilterList);
-          scopeStore.dispatch('kindList/set', struct.carKindList);
-          this.set(struct.carList);
-        })
+      return pollGet()
         .catch((err) => {
           this.setFailure(err.message);
           throw err;
         });
+
+      // return CarModel.search(payload.cid, payload.filter, payload.kind)
+      //   .then((struct) => {
+      //     scopeStore.dispatch('filterList/set', struct.carFilterList);
+      //     scopeStore.dispatch('kindList/set', struct.carKindList);
+      //     this.set(struct.carList);
+      //   })
+      //   .catch((err) => {
+      //     this.setFailure(err.message);
+      //     throw err;
+      //   });
     }
   }
 };

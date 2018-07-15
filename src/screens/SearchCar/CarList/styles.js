@@ -53,6 +53,9 @@ export const CarProvider = StyleSheet.create({
     fontSize: FONT_SIZE.xs,
     color: TEXT_COLOR_SECONDARY,
     textAlign: 'center'
+  },
+  bookingTips: {
+    color: COLOR.primary
   }
 });
 

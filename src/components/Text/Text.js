@@ -10,6 +10,9 @@ export default function TextComponent(props) {
     children, level, style, ...rest
   } = props;
 
+  if (!children) {
+    return null;
+  }
   return (
     <Text {...rest} style={[styles[level], style]}>{children}</Text>
   );
