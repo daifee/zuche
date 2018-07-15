@@ -1,50 +1,45 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native';
+import { connect } from 'react-redux';
 import { SideMenuContainer as styles } from './styles';
 import SideMenu, { SideMenuItem } from '../../../components/SideMenu';
 import Text from '../../../components/Text';
+import CarKindCollection from '../../../models/CarKind.Collection';
+import * as scopeStore from '../store';
 
-const data = [
-  { title: '全部' },
-  { title: '闪租', desc: '第一次租车首选' },
-  { title: '限时特惠' },
-  { title: 'SUV' },
-  { title: 'MPV' },
-  { title: '高级品牌', desc: '宝马 奔驰' },
-  { title: 'SUV' },
-  { title: 'MPV' },
-  { title: '高级品牌', desc: '宝马 奔驰' },
-  { title: 'SUV' },
-  { title: 'MPV' },
-  { title: '高级品牌', desc: '宝马 奔驰' },
-  { title: 'SUV' },
-  { title: 'MPV' },
-  { title: '高级品牌', desc: '宝马 奔驰' },
-];
-
-export default function SideMenuContainer() {
+function SideMenuContainer({ kindList, checkedKind }) {
   return (
     <SideMenu>
       <ScrollView>
-        {data.map((item, index) => {
-          const key = `${index}`;
-          const selected = index === 1;
+        {kindList.map((kind) => {
+          const key = kind.kind_code;
+          const selected = kind.kind_code === checkedKind;
+
           return (
-            <SideMenuItem key={key} selected={selected}>
+            <SideMenuItem
+              key={key}
+              selected={selected}
+              onPress={() => {
+                if (!selected) {
+                  scopeStore.dispatch('checkedKind/set', kind.kind_code);
+                }
+              }}
+            >
               <Text
                 numberOfLines={1}
                 style={styles.title}
               >
-                {item.title}
+                {kind.name}
               </Text>
-              {item.desc && (
+              {kind.intro ? (
                 <Text
                   numberOfLines={1}
                   style={styles.desc}
                 >
-                  {item.desc}
+                  {kind.intro}
                 </Text>
-              )}
+              ) : null}
             </SideMenuItem>
           );
         })}
@@ -52,3 +47,14 @@ export default function SideMenuContainer() {
     </SideMenu>
   );
 }
+
+SideMenuContainer.propTypes = {
+  kindList: PropTypes.instanceOf(CarKindCollection).isRequired,
+  checkedKind: PropTypes.string.isRequired
+};
+
+
+export default connect(() => {
+  const { checkedKind, kindList } = scopeStore.getState();
+  return { checkedKind, kindList };
+})(SideMenuContainer);

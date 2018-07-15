@@ -47,7 +47,7 @@ export const kindList = {
 export const checkedKind = {
   state: 'all',
   reducers: {
-    set(state, payload: number | string) {
+    set(state, payload: string) {
       return payload;
     }
   }
