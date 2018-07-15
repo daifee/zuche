@@ -1,17 +1,35 @@
 import React from 'react';
-// import { View } from 'react-native';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import SectionList from '../../../components/SectionList';
 import Section from './Section';
 import SectionHeader from './SectionHeader';
+import CarCollection from '../../../models/Car.Collection';
+import * as scopeStore from '../store';
+import CarModel from '../../../models/Car.Model';
 
-export default function CarList() {
+
+function CarList({ carList }) {
   return (<SectionList
-    sections={[{}, {}, {}, {}, {}, {}, {}]}
-    renderSectionHeader={() => {
-      return (<SectionHeader />);
+    sections={carList}
+    renderSectionHeader={({ section: car }) => {
+      const carModel = new CarModel(car);
+      return (<SectionHeader car={carModel} />);
     }}
-    renderSection={() => {
-      return (<Section />);
+    renderSection={(car) => {
+      return (<Section car={car} />);
+    }}
+    keyExtractor={(car) => {
+      return car.book;
     }}
   />);
 }
+
+CarList.propTypes = {
+  carList: PropTypes.instanceOf(CarCollection).isRequired
+};
+
+export default connect(() => {
+  const { carList } = scopeStore.getState();
+  return { carList };
+})(CarList);
