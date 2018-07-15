@@ -31,4 +31,25 @@ export default class CarFilterCollection extends BaseCollection {
 
     return result;
   }
+
+  formatToQuery() {
+    const map = {};
+    this.each((item) => {
+      if (!map[item.identify]) {
+        map[item.identify] = [];
+      }
+
+      if (map[item.identify].indexOf(item.value) === -1) {
+        map[item.identify].push(item.value);
+      }
+    });
+
+    const result = [];
+    Object.keys(map).forEach((key) => {
+      const value = map[key].join(',');
+      result.push(`${key}=${value}`);
+    });
+
+    return result.join('&');
+  }
 }

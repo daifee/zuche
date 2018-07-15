@@ -35,6 +35,7 @@ function HotOptionList({ filterList, checkedFilter }) {
                 } else {
                   scopeStore.dispatch('checkedFilter/add', filter);
                 }
+                scopeStore.dispatch('carList/get');
               }}
             >
               {filter.name}

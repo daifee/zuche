@@ -29,14 +29,14 @@ export default class CarModel extends BaseModel {
 
   static search(
     cid: string,
-    filter: {[filterType: string]: string},
-    kind: number | string = 'all'
+    filter: string,
+    kind: string = 'all'
   ) {
     return zuzuche.get('/w/book/api/list_json.php', {
       params: {
         id: cid,
         group: kind,
-        screenData: '',
+        screenData: filter,
         version: 2,
         sort: 0
       }

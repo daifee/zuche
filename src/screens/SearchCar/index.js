@@ -45,8 +45,8 @@ class SearchCar extends React.Component {
 
     const hide = Toast.loading();
     globalDispatch('searchParams/getCid')
-      .then((cid) => {
-        dispatch('carList/get', { cid });
+      .then(() => {
+        dispatch('carList/get');
         hide();
       })
       .catch((err) => {

@@ -8,6 +8,7 @@ import Text from '../../../components/Text';
 import CarKindCollection from '../../../models/CarKind.Collection';
 import * as scopeStore from '../store';
 
+
 function SideMenuContainer({ kindList, checkedKind }) {
   return (
     <SideMenu>
@@ -23,6 +24,7 @@ function SideMenuContainer({ kindList, checkedKind }) {
               onPress={() => {
                 if (!selected) {
                   scopeStore.dispatch('checkedKind/set', kind.kind_code);
+                  scopeStore.dispatch('carList/get');
                 }
               }}
             >

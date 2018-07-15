@@ -5,6 +5,7 @@ import CarKindCollection from '../../../models/CarKind.Collection';
 import CarCollection from '../../../models/Car.Collection';
 import CarModel from '../../../models/Car.Model';
 import * as scopeStore from './index';
+import * as globalStore from '../../../store';
 import CarFilterModel from '../../../models/CarFilter.Model';
 
 
@@ -82,15 +83,15 @@ export const carList = {
   },
 
   effects: {
-    get(payload: {
-      cid: string,
-      filter: {[filterType: string]: string},
-      kind: number | string
-    } = {}) {
+    get(payload, rootState) {
+      const { searchParams } = globalStore.getState(rootState);
+      const { checkedFilter, checkedKind } = scopeStore.getState(rootState);
+
       let times = 0;
+
       const pollGet = () => {
         times += 1;
-        return CarModel.search(payload.cid, payload.filter, payload.kind)
+        return CarModel.search(searchParams.cid, checkedFilter.formatToQuery(), checkedKind)
           .then((struct) => {
             const {
               carFilterList, carKindList, carList, complete
@@ -122,17 +123,6 @@ export const carList = {
           this.setFailure(err.message);
           throw err;
         });
-
-      // return CarModel.search(payload.cid, payload.filter, payload.kind)
-      //   .then((struct) => {
-      //     scopeStore.dispatch('filterList/set', struct.carFilterList);
-      //     scopeStore.dispatch('kindList/set', struct.carKindList);
-      //     this.set(struct.carList);
-      //   })
-      //   .catch((err) => {
-      //     this.setFailure(err.message);
-      //     throw err;
-      //   });
     }
   }
 };
