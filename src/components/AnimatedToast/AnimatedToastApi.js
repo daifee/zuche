@@ -6,6 +6,7 @@ type TYPE = 'loading' | 'success' | 'error' | 'warning' | 'info';
 type CONTENT = string;
 type OPTIONS = {
   duration: number,
+  time: number, // 显示时长，毫秒
   onShowEnd: () => {},
   onHideEnd: () => {}
 };
@@ -29,19 +30,33 @@ class AnimatedToastApi extends React.Component {
       onShowEnd: () => {},
       onHideEnd: () => {}
     };
+
+    this.timer = null;
   }
 
   componentWillUnmount() {
     singleInstance = null;
   }
 
-  show(type, content, options) {
+  show(type, content, options: OPTIONS) {
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
+    }
+
     this.setState({
       ...options, type, content, visible: true
     });
+
+    const time = typeof options.time === 'undefined' ? options.time : 5000;
+    if (time) {
+      this.timer = setTimeout(() => {
+        this.hide();
+      }, time);
+    }
   }
 
-  hide(options) {
+  hide(options: OPTIONS) {
     this.setState({
       ...options, visible: false
     });
@@ -73,7 +88,10 @@ export function show(type: TYPE, content: CONTENT, options: OPTIONS) {
 }
 
 export function loading(content: CONTENT = '加载中...', options: OPTIONS) {
-  return show('loading', content, options);
+  return show('loading', content, {
+    time: 0,
+    ...options
+  });
 }
 
 export function success(content: CONTENT, options: OPTIONS) {

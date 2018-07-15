@@ -17,6 +17,7 @@ import { SearchCar as styles } from './styles';
 import SearchParamsModel from '../../models/SearchParams.Model';
 import { getState as globalGetState, dispatch as globalDispatch } from '../../store';
 import { dispatch } from './store';
+import * as Toast from '../../components/AnimatedToast';
 
 
 class SearchCar extends React.Component {
@@ -42,11 +43,14 @@ class SearchCar extends React.Component {
 
     navigation.setParams({ searchParams });
 
+    const hide = Toast.loading();
     globalDispatch('searchParams/getCid')
       .then((cid) => {
         dispatch('carList/get', { cid });
+        hide();
       })
       .catch((err) => {
+        Toast.error(err.message);
         console.log(err);
       });
   }
