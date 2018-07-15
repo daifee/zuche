@@ -5,6 +5,7 @@ import CarKindCollection from '../../../models/CarKind.Collection';
 import CarCollection from '../../../models/Car.Collection';
 import CarModel from '../../../models/Car.Model';
 import * as scopeStore from './index';
+import CarFilterModel from '../../../models/CarFilter.Model';
 
 
 export const filterList = {
@@ -17,20 +18,27 @@ export const filterList = {
 };
 
 export const checkedFilter = {
-  state: [],
+  state: new CarFilterCollection([]),
   reducers: {
-    add(state, payload: string) {
-      const newState = [...state, payload];
+    add(state, carFilter: CarFilterModel) {
+      if (state.has(carFilter)) {
+        return state;
+      }
+
+      const newState = state.clone();
+      newState.add(carFilter);
       return newState;
     },
-    remove(state, payload: string) {
-      const newState = state.filter((item) => {
-        return item !== payload;
-      });
+    remove(state, carFilter: CarFilterModel) {
+      if (!state.has(carFilter)) {
+        return state;
+      }
+      const newState = state.clone();
+      newState.remove(carFilter);
       return newState;
     },
     clear() {
-      return [];
+      return new CarFilterCollection([]);
     }
   }
 };

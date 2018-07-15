@@ -15,8 +15,8 @@ function HotOptionList({ filterList, checkedFilter }) {
       horizontal
     >
       {filterList.map((filter) => {
-          const key = filter.value;
-          const checked = checkedFilter.indexOf(filter.value) !== -1;
+          const key = filter.id;
+          const checked = checkedFilter.has(filter);
 
           return (
             <CheckButton
@@ -31,9 +31,9 @@ function HotOptionList({ filterList, checkedFilter }) {
                 }
 
                 if (checked) {
-                  scopeStore.dispatch('checkedFilter/remove', filter.value);
+                  scopeStore.dispatch('checkedFilter/remove', filter);
                 } else {
-                  scopeStore.dispatch('checkedFilter/add', filter.value);
+                  scopeStore.dispatch('checkedFilter/add', filter);
                 }
               }}
             >
@@ -47,7 +47,7 @@ function HotOptionList({ filterList, checkedFilter }) {
 
 HotOptionList.propTypes = {
   filterList: PropTypes.instanceOf(CarFilterCollection).isRequired,
-  checkedFilter: PropTypes.arrayOf(PropTypes.string).isRequired
+  checkedFilter: PropTypes.instanceOf(CarFilterCollection).isRequired
 };
 
 

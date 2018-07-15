@@ -10,6 +10,10 @@ export default class CarFilterModel extends BaseModel {
   disable: boolean;
   identity: string; // seat, terminal, payment, feature, dealer
 
+  get id() {
+    return this.type + this.value;
+  }
+
   set value(value: string | number) {
     this.doc.value = `${value}`;
   }
