@@ -10,10 +10,10 @@ export default function Section({ car }) {
   return (
     <View style={styles.container}>
       <CarComponent key="car" car={car} />
-      {car.shopList.map((shop) => {
+      {car.meal_list.map((meal) => {
         //
-        const key = `${shop.book}`;
-        return (<CarProvider key={key} />);
+        const key = `${meal.book}`;
+        return (<CarProvider key={key} meal={meal} />);
       })}
     </View>
   );

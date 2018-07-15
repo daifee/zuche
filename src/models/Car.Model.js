@@ -8,7 +8,8 @@ import StructModel from './Struct.Model';
 import CarKindCollection from './CarKind.Collection';
 import CarFilterCollection from './CarFilter.Collection';
 import CarCollection from './Car.Collection';
-import CarShopCollection from './CarShop.Collection';
+import CarMealCollection from './CarMeal.Collection';
+import CarShopModel from './CarShop.Model';
 
 
 export default class CarModel extends BaseModel {
@@ -56,15 +57,29 @@ export default class CarModel extends BaseModel {
       const filter = data.filter || {};
       const filterList = filter.min || [];
 
+      const mapShop = data.shop || {};
+
       const result = new StructModel({});
       result.carKindList = new CarKindCollection(kindList);
       result.carFilterList = new CarFilterCollection(filterList);
 
       carList = carList.map((car) => {
+        const mealList = (car.meal_list || []).map((meal) => {
+          let pickupShop = mapShop[meal.pickup_shop];
+          pickupShop = pickupShop ? new CarShopModel(pickupShop) : null;
+          let dropoffShop = mapShop[meal.dropoff_shop];
+          dropoffShop = dropoffShop ? new CarShopModel(dropoffShop) : null;
+
+          return {
+            ...meal,
+            pickupShop,
+            dropoffShop
+          };
+        });
+
         return {
           ...car,
-          shopList: new CarShopCollection(car.meal_list || []),
-          meal_list: undefined
+          meal_list: new CarMealCollection(mealList)
         };
       });
       result.carList = new CarCollection(carList);
