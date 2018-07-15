@@ -74,8 +74,8 @@ class SearchCar extends React.Component {
   }
 }
 
-export default connect((props) => {
-  const { searchParams } = globalGetState();
+export default connect((rootState, props) => {
+  const { searchParams } = globalGetState(rootState);
 
   return {
     ...props,

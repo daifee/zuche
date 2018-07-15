@@ -91,8 +91,8 @@ export default {
   },
 
   effects: {
-    getCid() {
-      const { searchParams } = globalStore.getState();
+    getCid(payload, rootState) {
+      const { searchParams } = globalStore.getState(rootState);
       this.setLoading();
 
       return SearchParamsModel.getCid(searchParams)

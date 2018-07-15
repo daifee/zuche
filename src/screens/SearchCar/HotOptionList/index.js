@@ -51,7 +51,7 @@ HotOptionList.propTypes = {
 };
 
 
-export default connect(() => {
-  const { filterList, checkedFilter } = scopeStore.getState();
+export default connect((rootState) => {
+  const { filterList, checkedFilter } = scopeStore.getState(rootState);
   return { filterList, checkedFilter };
 })(HotOptionList);

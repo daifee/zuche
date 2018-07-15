@@ -40,7 +40,7 @@ SearchSection.propTypes = {
   searchParams: PropTypes.instanceOf(SearchParams).isRequired
 };
 
-export default connect(() => {
-  const { searchParams } = globalGetState();
+export default connect((rootState) => {
+  const { searchParams } = globalGetState(rootState);
   return { searchParams };
 })(SearchSection);

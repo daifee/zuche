@@ -29,7 +29,7 @@ CarList.propTypes = {
   carList: PropTypes.instanceOf(CarCollection).isRequired
 };
 
-export default connect(() => {
-  const { carList } = scopeStore.getState();
+export default connect((rootState) => {
+  const { carList } = scopeStore.getState(rootState);
   return { carList };
 })(CarList);

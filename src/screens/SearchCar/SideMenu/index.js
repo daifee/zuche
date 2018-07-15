@@ -54,7 +54,7 @@ SideMenuContainer.propTypes = {
 };
 
 
-export default connect(() => {
-  const { checkedKind, kindList } = scopeStore.getState();
+export default connect((rootState) => {
+  const { checkedKind, kindList } = scopeStore.getState(rootState);
   return { checkedKind, kindList };
 })(SideMenuContainer);

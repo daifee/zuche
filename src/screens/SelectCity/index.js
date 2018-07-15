@@ -90,11 +90,11 @@ class SelectCity extends React.Component {
   }
 }
 
-export default connect((state, props) => {
+export default connect((rootState, props) => {
   const { navigation } = props;
   const type = navigation.getParam('type');
   const { categorizedCities, selectedCategoryId } = getState();
-  const { searchParams } = globalGetState();
+  const { searchParams } = globalGetState(rootState);
   let selectedCity;
   if (type === 'pickup') {
     selectedCity = searchParams.pickupCity;

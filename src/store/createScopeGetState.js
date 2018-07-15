@@ -1,11 +1,9 @@
 
-// import { getState } from '@rematch/core';
-import store from './store';
 import { extractModelName } from './createScopeModels';
 
 function createScopeGetState(scope: string): Function {
-  return function scopeGetState() {
-    const state = store.getState() || {};
+  return function scopeGetState(rootState = {}) {
+    const state = rootState;
 
     const scopeState = {};
     Object.keys(state).forEach((key) => {
